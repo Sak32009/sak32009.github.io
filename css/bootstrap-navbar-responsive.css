@@ -1,0 +1,44 @@
+/*
+ * Copyright © Sak32009 2015+
+ */
+
+/* NAVBAR RESPONSIVE */
+@media (max-width: 543px){
+
+	.navbar-responsive .navbar-nav{
+
+		float: none !important;
+
+	}
+
+	.navbar-responsive .navbar-nav .nav-item{
+
+		float: none !important;
+
+	}
+
+	.navbar-responsive .navbar-nav .nav-item + .nav-item{
+
+		margin-left: 0;
+
+	}
+
+	.navbar-responsive .dropdown-menu{
+
+		position: inherit;
+		background-color: transparent;
+		border: 0;
+		padding: 0;
+		margin: 0;
+		width: 100%;
+
+	}
+
+	/* FIX */
+	.navbar-responsive .navbar-nav .nav-link *[class*="hidden-"]{
+
+		display: inline !important;
+
+	}
+
+}
