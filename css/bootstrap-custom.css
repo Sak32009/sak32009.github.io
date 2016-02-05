@@ -2,6 +2,31 @@
  * Copyright © Sak32009 2016
  */
 
+/* FULL HEIGHT */
+html, body{
+
+    height: 100%;
+
+}
+
+#wrap{
+
+    min-height: 100%;
+
+}
+
+.footerFullHeight{
+
+    height: 85px;
+
+}
+
+.wrapFixHeight{
+
+    margin-bottom: -85px;
+
+}
+
 /* HR */
 .hr{
 
