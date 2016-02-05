@@ -1,5 +1,5 @@
 /*
- * Copyright © Sak32009 2015+
+ * Copyright © Sak32009 2016
  */
 
 /* HR */
@@ -49,5 +49,15 @@
 .btn-github:focus{
 
     background-color: #4183c4;
+
+}
+
+/* OTHER */
+.github-img-profile{
+
+    height: 20px;
+    width: auto;
+    border-radius: 50%;
+    margin-top: -2px;
 
 }
