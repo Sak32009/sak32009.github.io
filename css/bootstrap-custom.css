@@ -15,15 +15,17 @@ html, body{
 
 }
 
-.footerFullHeight{
+/* NAV */
+.navbar{
 
-    height: 85px;
+	padding: 1rem;
+	color: #eceeef;
 
 }
 
-.wrapFixHeight{
+.navbar-dark .navbar-nav .nav-link{
 
-    margin-bottom: -85px;
+	color: white;
 
 }
 
@@ -31,14 +33,14 @@ html, body{
 .hr{
 
     height: 5px;
-    border-top: 5px solid #fff;
+    background-color: white;
 
 }
 
 .hr > .fa{
 
     position: relative;
-    top: -20px;
+    top: -15px;
 
 }
 
@@ -46,12 +48,6 @@ html, body{
 .bg-color-4B2E52{
 
     background-color: #4B2E52;
-
-}
-
-.text-color-eceeef{
-
-    color: #eceeef;
 
 }
 
@@ -64,7 +60,7 @@ html, body{
 /* BUTTON GITHUB */
 .btn-github{
 
-    color: #fff !important;
+    color: #fff;
     background-color: #333;
     border-color: rgba(0, 0, 0, 0.2);
 
@@ -73,6 +69,7 @@ html, body{
 .btn-github:hover,
 .btn-github:focus{
 
+    color: #fff;
     background-color: #4183c4;
 
 }
