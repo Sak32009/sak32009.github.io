@@ -1,5 +1,5 @@
 /*
- * Copyright © Sak32009 2016
+ * Copyright (C) Sak32009 2016
  */
 
 /* FULL HEIGHT */
@@ -18,14 +18,14 @@ html, body{
 /* NAV */
 .navbar{
 
-	padding: 1rem;
-	color: #eceeef;
+    padding: 1rem;
+    color: #eceeef;
 
 }
 
 .navbar-dark .navbar-nav .nav-link{
 
-	color: white;
+    color: white;
 
 }
 
