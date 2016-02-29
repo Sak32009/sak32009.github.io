@@ -12,6 +12,22 @@ html, body{
 #wrap{
 
     min-height: 100%;
+    margin-bottom: -56px;
+
+}
+
+#wrap:after{
+
+    content: '';
+    display: block;
+    height: 56px;
+
+}
+
+/* BODY */
+body{
+
+    font-family: 'Roboto', sans-serif;
 
 }
 
