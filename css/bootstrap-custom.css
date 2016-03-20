@@ -2,31 +2,10 @@
  * Copyright (C) Sak32009 2016
  */
 
-/* FULL HEIGHT */
-html, body{
-
-    height: 100%;
-
-}
-
-#wrap{
-
-    min-height: 100%;
-    margin-bottom: -56px;
-
-}
-
-#wrap:after{
-
-    content: '';
-    display: block;
-    height: 56px;
-
-}
-
 /* BODY */
 body{
 
+    background-color: #fcfcfc;
     font-family: 'Roboto', sans-serif;
 
 }
@@ -34,8 +13,7 @@ body{
 /* NAV */
 .navbar{
 
-    padding: 1rem;
-    color: #eceeef;
+    color: white;
 
 }
 
@@ -45,18 +23,10 @@ body{
 
 }
 
-/* HR */
-.hr{
+/* SECTION */
+section{
 
-    height: 5px;
-    background-color: white;
-
-}
-
-.hr > .fa{
-
-    position: relative;
-    top: -15px;
+    box-shadow: inset 0 8px 8px -8px black, inset 0 -8px 8px -8px black;
 
 }
 
@@ -67,6 +37,24 @@ body{
 
 }
 
+.bg-color-fff{
+
+    background-color: #fff;
+
+}
+
+.bd-color-4B2E52{
+
+    border-color: #4B2E52;
+
+}
+
+.text-color-4B2E52{
+
+    color: #4B2E52;
+
+}
+
 .text-color-fff{
 
     color: #fff;
@@ -74,28 +62,39 @@ body{
 }
 
 /* BUTTON GITHUB */
-.btn-github{
+.btn-github-outline{
 
-    color: #fff;
-    background-color: #333;
-    border-color: rgba(0, 0, 0, 0.2);
+    color: #333;
+    background-color: #fff;
+    background-image: none;
+    border-color: #333;
 
 }
 
-.btn-github:hover,
-.btn-github:focus{
+.btn-github-outline:hover,
+.btn-github-outline:focus{
 
     color: #fff;
-    background-color: #4183c4;
+    background-color: #333;
+    border-color: #333;
 
 }
 
 /* OTHER */
 .github-img-profile{
 
+    display: inline-block;
     height: 20px;
     width: auto;
     border-radius: 50%;
     margin-top: -2px;
+
+}
+
+.divider{
+
+    height: 1px;
+    overflow: hidden;
+    background-color: #4B2E52;
 
 }
