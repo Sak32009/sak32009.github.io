@@ -6,6 +6,7 @@
 body{
 
     background-color: #fcfcfc;
+    padding-top: 70px;
     font-family: 'Roboto', sans-serif;
 
 }
@@ -87,13 +88,19 @@ footer{
 }
 
 /* OTHER */
-.github-img-profile{
+.github-img-profile,
+.navbar-img-profile{
 
-    display: inline-block;
+    display: inline-block !important;
     height: 20px;
     width: auto;
-    border-radius: 50%;
     margin-top: -2px;
+
+}
+
+.github-img-profile{
+
+    border-radius: 50%;
 
 }
 
