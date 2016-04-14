@@ -6,7 +6,7 @@
 body{
 
     color: white;
-	font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto', sans-serif;
 
 }
 
@@ -98,7 +98,7 @@ section:nth-child(5) > .container-fluid{
 .osx-window.card .card-title{
 
     padding: 5px;
-	margin-bottom: 0;
+    margin-bottom: 0;
     background-color: rgba(0, 0, 0, 0.02);
     border-top: 1px solid rgba(0, 0, 0, 0.04);
     border-bottom: 1px solid rgba(0, 0, 0, 0.04);
@@ -186,7 +186,7 @@ pre{
 
     color: #7D6EC6;
     background-color: white;
-	box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
 
 }
 
@@ -194,7 +194,7 @@ pre{
 .btn-download:focus{
 
     color: white;
-	background-color: #D9623F;
+    background-color: #D9623F;
 
 }
 
