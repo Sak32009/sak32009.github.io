@@ -6,7 +6,6 @@
 body{
 
     background-color: #fcfcfc;
-    padding-top: 70px;
     font-family: 'Roboto', sans-serif;
 
 }
@@ -109,5 +108,17 @@ footer{
     height: 1px;
     overflow: hidden;
     background-color: #ddd;
+
+}
+
+#wrap_section > section{
+
+    border-bottom: 1px solid #eee;
+
+}
+
+#wrap_section > section:last-child{
+
+    border-bottom: 0;
 
 }
