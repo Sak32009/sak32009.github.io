@@ -5,55 +5,9 @@
 /* BODY */
 body{
 
-    background-color: #fcfcfc;
-    font-family: 'Roboto', sans-serif;
-
-}
-
-/* NAV */
-.navbar{
-
-    color: white;
-
-}
-
-.navbar-dark .navbar-nav .nav-link{
-
-    color: white;
-
-}
-
-/* CARD */
-.card-material{
-
-    border-radius: 2px;
-
-}
-
-/* SHADOW */
-.box-shadow{
-
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 -2px 10px 0 rgba(0, 0, 0, 0.12);
-
-}
-
-.box-shadow-1{
-
-    box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.5);
-
-}
-
-/* COLORS */
-.bg-color-custom{
-
     color: #fff;
     background-color: #4B2E52;
-
-}
-
-.text-color-custom{
-
-    color: #4B2E52;
+    font-family: 'Roboto', sans-serif;
 
 }
 
@@ -71,27 +25,5 @@ body{
 
     color: #fff;
     background-color: #333;
-
-}
-
-/* DIVIDER */
-.divider{
-
-    height: 1px;
-    overflow: hidden;
-    background-color: #ddd;
-
-}
-
-/* WRAP SECTION */
-#wrap_section > section{
-
-    border-bottom: 1px solid #eee;
-
-}
-
-#wrap_section > section:last-child{
-
-    border-bottom: 0;
 
 }

@@ -24,91 +24,25 @@
 <!-- FAVICON -->
 <link href="image/250x188.png" type="image/png" rel="icon">
 <!-- BOOTSTRAP -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.3/css/bootstrap.min.css" rel="stylesheet">
 <!-- FONT AWESOME -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 <!-- FONT ROBOTO -->
 <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 <!-- BOOTSTRAP CUSTOM -->
-<link href="css/bootstrap-custom.css" rel="stylesheet">
+<link href="css/bootstrap-custom.min.css" rel="stylesheet">
 </head>
 <body>
-<!-- HEADER -->
-<header class="bg-color-custom box-shadow-1">
-    <!-- CONTAINER -->
-    <div class="container-fluid text-xs-center p-y-3">
-        <!-- LOGO -->
-        <img src="image/250x188.png" class="img-fluid m-x-auto" alt="Sak32009 Logo">
-        <!-- INFO -->
-        <h1>Sak32009</h1>
-        <div class="p-y-2">
-            <div class="row">
-                <div class="col-sm-4 col-sm-offset-4">
-                    <a class="btn btn-block btn-lg btn-github-outline text-uppercase" href="https://github.com/Sak32009"><i class="fa fa-github fa-lg"></i> GitHub</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
-<!-- WRAP SECTION -->
-<div id="wrap_section">
-    <!-- OPEN SOURCE -->
-    <section>
-        <div class="container text-xs-center p-y-3">
-            <h2 class="text-color-custom text-uppercase font-weight-bold">My Projects</h2>
-            <div class="text-muted">&#171; My software never has bugs, it includes only random functionality. &#187;</div>
-            <div class="p-y-2">
-                <div class="row">
-                    <div class="col-sm-6 col-sm-offset-3">
-                        <div class="divider"></div>
-                    </div>
-                </div>
-            </div>
-            <div id="github_my_repos" class="row">
-                <noscript>Please enable JavaScript!</noscript>
-            </div>
-        </div>
-    </section>
+<!-- CONTAINER -->
+<div class="container-fluid text-xs-center p-y-3">
+    <!-- LOGO -->
+    <img src="image/250x188.png" class="img-fluid m-x-auto" alt="Sak32009 Logo">
+    <!-- INFO -->
+    <h1>Sak32009</h1>
+    <p class="text-muted">&#171; My software never has bugs, it includes only random functionality. &#187;</p>
+    <a class="btn btn-lg btn-github-outline text-uppercase" href="https://github.com/Sak32009"><i class="fa fa-github fa-lg" aria-hidden="true"></i> GitHub</a>
 </div>
-<!-- FOOTER -->
-<footer class="bg-color-custom box-shadow-1">
-    <!-- CONTAINER -->
-    <div class="container-fluid text-xs-center p-y-1">
-        Copyright &copy; Sak32009 2016
-    </div>
-</footer>
 <!-- GOOGLE ANALYTICS -->
-<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-53801518-1','auto');ga('send','pageview');</script>
-<!-- COOKIE CONSENT -->
-<script>window.cookieconsent_options={message:"Cookies help us to deliver quality services. Using our services, you agree to our mode of use of cookies.",dismiss:"I understand",theme:"dark-bottom"}</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/1.0.10/cookieconsent.min.js"></script>
-<!-- MUSTACHE -->
-<script id="github_my_repos_template" type="x-tmpl-mustache">
-    {{#repo}}
-    <div class="col-md-4 col-sm-6">
-        <div class="card card-material box-shadow">
-            <div class="card-block">
-                <p><i class="fa fa-{{icon}} fa-5x text-color-custom"></i></p>
-                <h4 class="card-title text-color-custom"><b>{{name}}</b></h4>
-            </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">
-                    <a class="btn btn-block btn-github-outline text-xs-left" href="https://github.com/Sak32009/{{name}}">
-                        <i class="fa fa-github fa-lg"></i> {{name}}
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    {{/repo}}
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.min.js"></script>
-<script>window.onload=function(){var e=document.getElementById("github_my_repos_template").innerHTML;Mustache.parse(e);var n=Mustache.render(e,{repo:[{name:"unique-id",icon:"key"},{name:"router",icon:"sitemap"},{name:"js.languages",icon:"language"},{name:"languages",icon:"language"},{name:"mcrypt",icon:"user-secret"},{name:"antiadblock",icon:"lock"},{name:"codeshield",icon:"code"}]});document.getElementById("github_my_repos").innerHTML=n};</script>
-<!-- JQUERY -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-<!-- TETHER -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.3/js/tether.min.js"></script>
-<!-- BOOTSTRAP -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.2/js/bootstrap.min.js"></script>
+<script>!function(e,t,a,n,c,o,s){e.GoogleAnalyticsObject=c,e[c]=e[c]||function(){(e[c].q=e[c].q||[]).push(arguments)},e[c].l=1*new Date,o=t.createElement(a),s=t.getElementsByTagName(a)[0],o.async=1,o.src=n,s.parentNode.insertBefore(o,s)}(window,document,"script","https://www.google-analytics.com/analytics.js","ga"),ga("create","UA-53801518-1","auto"),ga("send","pageview");</script>
 </body>
 </html>
