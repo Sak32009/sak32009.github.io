@@ -1,6 +1,6 @@
 // CREAMAPI (FULL INI)
 GetDLCInfofromSteamDB.format.creamAPI = {
-    name: "CREAMAPI (FULL INI)",
+    name: "CREAMAPI v2.0.0.6 HOTFIX (FULL INI)",
     ini: "CREAMAPI.ini",
     options: {
         creamapi_unlock_all: {

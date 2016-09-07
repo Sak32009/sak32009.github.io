@@ -1,6 +1,6 @@
 // CREAMAPI (ONLY DLC LIST)
 GetDLCInfofromSteamDB.format.creamAPI_o = {
-    name: "CREAMAPI (ONLY DLC LIST)",
+    name: "CREAMAPI v2.0.0.6 HOTFIX (ONLY DLC LIST)",
     ini: "CREAMAPI_O.ini",
     options: {},
     data: "[dlc_subscription]\n" +

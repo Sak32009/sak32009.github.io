@@ -5,7 +5,7 @@
     <meta http-equiv="cleartype" content="on">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Sak32009</title>
+    <title>Sak32009 - Get DLC Info from SteamDB</title>
     <!-- BASE -->
     <base href="https://sak32009.github.io/steamdb/">
     <!-- SEO -->
@@ -14,6 +14,12 @@
           content="Get DLC Info from SteamDB">
     <!-- AUTHOR -->
     <link rel="author" href="../humans.txt">
+    <!-- FAVICON -->
+    <link rel="shortcut icon" href="https://steamdb.info/favicon.ico">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://steamdb.info/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="https://steamdb.info/static/logos/favicon-196x196.png" sizes="196x196">
+    <link rel="icon" type="image/png" href="https://steamdb.info/static/logos/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="https://steamdb.info/static/logos/favicon-32x32.png" sizes="32x32">
     <!-- BOOTSTRAP -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.3/css/bootstrap.min.css"
           rel="stylesheet">
@@ -24,15 +30,19 @@
     <!-- CUSTOM STYLE -->
     <link href="css/bootstrap-custom.css" rel="stylesheet">
     <link href="css/bootstrap-navbar-responsive.css" rel="stylesheet">
+    <!-- GOOGLE ANALYTICS -->
+    <script src="js/gagol.js"></script>
 </head>
 <body>
+<!-- HEADER -->
 <header>
-    <div class="text-xs-center p-y-2">
+    <div class="container-fluid text-xs-center p-y-2">
         <p><img src="https://steamdb.info/apple-touch-icon.png"
                 alt="Logo"></p>
         <h4>Get DLC Info from SteamDB</h4>
     </div>
 </header>
+<!-- NAV -->
 <nav class="navbar navbar-full navbar-dark bg-inverse navbar-responsive">
     <div class="container-fluid">
         <div class="navbar-brand">GDIFSDB</div>
@@ -60,6 +70,7 @@
         </div>
     </div>
 </nav>
+<!-- MAIN -->
 <main>
     <div class="container-fluid m-y-2">
         <div class="row">
@@ -70,19 +81,18 @@
                         <div class="pull-xs-right">
                             <form class="form-inline m-b-1 d-inline-block" id="GetDLCInfoFromSteamDB_submit">
                                 <div class="form-group">
-                                    <select class="form-control" id="GetDLCInfoFromSteamDB_select">
-                                    </select>
+                                    <select class="form-control" id="GetDLCInfoFromSteamDB_select"></select>
                                 </div>
                                 <button type="submit" class="btn btn-success">Get DLC List</button>
                             </form>
                             <div class="dropdown d-inline-block">
-                                <button class="btn btn-secondary dropdown-toggle" type="button"
+                                <button class="btn btn-primary dropdown-toggle" type="button"
                                         data-toggle="dropdown">
-                                    Download file ...
+                                    Download
                                 </button>
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" href="#" id="GetDLCInfoFromSteamDB_ini"
-                                       download="empty.txt">File .INI</a>
+                                       download="empty.txt">format.ini</a>
                                     <a class="dropdown-item" href="#" id="GetDLCInfoFromSteamDB_steam_appid"
                                        download="steam_appid.txt">steam_appid.txt</a>
                                 </div>
@@ -94,17 +104,16 @@
                     <!-- GLOBAL OPTIONS -->
                     <div class="tab-pane" id="global_options">
                         <div class="card">
-                            <div class="card-header text-uppercase text-xs-center">
-                                Global Options
-                            </div>
                             <form class="GetDLCInfoFromSteamDB_globalOptions" id="GetDLCInfoFromSteamDB_submit_options">
+                                <div class="card-header text-uppercase text-xs-center">
+                                    Global Options
+                                    <button type="submit" class="btn btn-sm pull-xs-right btn-success">Save Options
+                                    </button>
+                                </div>
                                 <div class="table-responsive">
                                     <table class="table table-bordered m-b-0">
                                         <tbody></tbody>
                                     </table>
-                                </div>
-                                <div class="card-block">
-                                    <button type="submit" class="btn btn-block btn-success">Save Options</button>
                                 </div>
                             </form>
                         </div>
@@ -126,26 +135,25 @@
             </div>
             <div class="col-sm-4">
                 <!-- BUTTONS -->
-                <div class="card">
-                    <div class="card-header text-uppercase text-xs-center">
-                        BUTTONS
-                    </div>
-                    <div class="card-block">
-                        <button type="button" class="btn btn-secondary btn-block"
-                                id="GetDLCInfoFromSteamDB_resetOptions">Reset All
-                        </button>
-                    </div>
-                </div>
+                <button type="button" class="btn btn-danger btn-block m-b-1" id="GetDLCInfoFromSteamDB_resetOptions">
+                    Reset All
+                </button>
                 <!-- INFO USERSCRIPT -->
                 <div class="card">
                     <div class="card-header text-uppercase text-xs-center">
-                        Info Userscript
+                        Userscript
                     </div>
                     <div class="table-responsive">
                         <table class="table table-bordered m-b-0">
                             <tbody>
                             <tr>
-                                <td>Homepage</td>
+                                <td>Website</td>
+                                <td><a href="https://github.com/Sak32009/sak32009.github.io/tree/master/steamdb"
+                                       target="_blank">GITHUB</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Userscript</td>
                                 <td><a href="https://github.com/Sak32009/GetDLCInfoFromSteamDB"
                                        target="_blank">GITHUB</a>
                                 </td>
@@ -167,7 +175,7 @@
                 <!-- INFO FROM STEAMDB -->
                 <div class="card">
                     <div class="card-header text-uppercase text-xs-center">
-                        Info from SteamDB
+                        SteamDB
                     </div>
                     <div class="table-responsive">
                         <table class="table table-bordered m-b-0">
@@ -180,11 +188,15 @@
                             <tbody>
                             <tr>
                                 <td>AppID</td>
-                                <td id="GetDLCInfofromSteamDB_appID"></td>
+                                <td><a href="#" target="_blank" id="GetDLCInfofromSteamDB_appID"></a></td>
                             </tr>
                             <tr>
                                 <td>AppID Name</td>
                                 <td id="GetDLCInfofromSteamDB_appIDName"></td>
+                            </tr>
+                            <tr>
+                                <td>DLCs</td>
+                                <td id="GetDLCInfofromSteamDB_dlcs"></td>
                             </tr>
                             <tr>
                                 <td>Total DLCs</td>
@@ -210,13 +222,12 @@
         </div>
     </div>
 </main>
+<!-- FOOTER -->
 <footer class="bg-inverse">
     <div class="container-fluid text-xs-center p-y-1">
         &copy; Sak32009 2016
     </div>
 </footer>
-<!-- GOOGLE ANALYTICS -->
-<script>!function(e,t,a,n,c,o,s){e.GoogleAnalyticsObject=c,e[c]=e[c]||function(){(e[c].q=e[c].q||[]).push(arguments)},e[c].l=1*new Date,o=t.createElement(a),s=t.getElementsByTagName(a)[0],o.async=1,o.src=n,s.parentNode.insertBefore(o,s)}(window,document,"script","https://www.google-analytics.com/analytics.js","ga"),ga("create","UA-53801518-1","auto"),ga("send","pageview");</script>
 <!-- JQUERY -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <!-- TETHER -->
@@ -225,19 +236,19 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.3/js/bootstrap.min.js"></script>
 <!-- GetDLCInfofromSteamDB -->
 <script src="js/GetDLCInfofromSteamDB.js"></script>
-<!-- GetDLCInfofromSteamDB FORMAT -->
-<script src="format/lumaemu.js"></script>
-<script src="format/lumaemu_o.js"></script>
-<script src="format/creamAPI.js"></script>
-<script src="format/creamAPI_o.js"></script>
-<script src="format/smartsteamemu_o.js"></script>
-<script src="format/reloaded.js"></script>
-<script src="format/skidrow.js"></script>
-<script src="format/3dmgame.js"></script>
-<script src="format/codex.js"></script>
-<script src="format/codex_t.js"></script>
-<script src="format/ali213.js"></script>
-<script src="format/revolt.js"></script>
+<!-- GetDLCInfofromSteamDB DATA -->
+<script src="js/GetDLCInfofromSteamDB/lumaemu.js"></script>
+<script src="js/GetDLCInfofromSteamDB/lumaemu_o.js"></script>
+<script src="js/GetDLCInfofromSteamDB/creamAPI.js"></script>
+<script src="js/GetDLCInfofromSteamDB/creamAPI_o.js"></script>
+<script src="js/GetDLCInfofromSteamDB/smartsteamemu_o.js"></script>
+<script src="js/GetDLCInfofromSteamDB/reloaded.js"></script>
+<script src="js/GetDLCInfofromSteamDB/skidrow.js"></script>
+<script src="js/GetDLCInfofromSteamDB/3dmgame.js"></script>
+<script src="js/GetDLCInfofromSteamDB/codex.js"></script>
+<script src="js/GetDLCInfofromSteamDB/codex_t.js"></script>
+<script src="js/GetDLCInfofromSteamDB/ali213.js"></script>
+<script src="js/GetDLCInfofromSteamDB/revolt.js"></script>
 <!-- GetDLCInfofromSteamDB RUN -->
 <script>GetDLCInfofromSteamDB.run();</script>
 </body>

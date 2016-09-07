@@ -1,6 +1,6 @@
 // LUMAEMU (FULL INI)
 GetDLCInfofromSteamDB.format.lumaemu = {
-    name: "LUMAEMU (FULL INI)",
+    name: "LUMAEMU v1.9.7 (FULL INI)",
     ini: "LUMAEMU.ini",
     options: {
         lumaemu_offline: {
