@@ -42,7 +42,7 @@ var GetDLCInfofromSteamDB = {
     run: function () {
 
         // GET PARAM
-        var param = this.getParam("steamdb");
+        var param = this.getParam();
 
         if (param !== false && param.length) {
 
@@ -50,13 +50,6 @@ var GetDLCInfofromSteamDB = {
 
                 // PARSE JSON
                 this.steamDB = JSON.parse(param);
-
-            } catch (e) {
-
-                this.alert(e);
-
-            } finally {
-
                 // VARS
                 this.steamDB.dlcsTot = Object.keys(this.steamDB.dlcs).length;
                 this.steamDB.configEXE = this.steamDB.configEXE.replace(/\/\//g, "/");
@@ -74,6 +67,8 @@ var GetDLCInfofromSteamDB = {
                 // GET DLC LIST
                 this.getDLCList();
 
+            } catch (e) {
+                this.alert(e);
             }
 
         } else {
@@ -464,22 +459,11 @@ var GetDLCInfofromSteamDB = {
     },
 
     // GET PARAM
-    getParam: function (param) {
+    getParam: function () {
 
-        var query = window.location.search.substring(1);
-        var vars = query.split("&");
+        var query = window.location.href.split("?").slice(1);
 
-        for (var i = 0; i < vars.length; i++) {
-
-            var pair = vars[i].split("=");
-
-            if (pair[0] == param) {
-                return decodeURIComponent(pair[1]);
-            }
-
-        }
-
-        return false;
+        return decodeURIComponent(query.join(""));
 
     },
 
