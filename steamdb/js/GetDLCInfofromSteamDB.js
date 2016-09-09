@@ -461,9 +461,9 @@ var GetDLCInfofromSteamDB = {
     // GET PARAM
     getParam: function () {
 
-        var query = window.location.href.split("?").slice(1);
+        var query = window.location.search.substr(1);
 
-        return decodeURIComponent(query.join(""));
+        return decodeURIComponent(query);
 
     },
 
