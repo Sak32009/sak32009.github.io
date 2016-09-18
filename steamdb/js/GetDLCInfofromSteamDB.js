@@ -1,17 +1,29 @@
 var GetDLCInfofromSteamDB = {
 
     // STEAMDB
-    steamDB: {},
+    steamDB: {
+        appID: "",
+        appIDBg: "",
+        appIDLogo: "",
+        appIDName: "",
+        configEXE: "",
+        configARG: "",
+        dlcs: {},
+        dlcsTot: 0,
+        xml: null,
+    },
+    // SCRIPT
+    script: {
+        author: "Sak32009",
+        name: "Get DLC Info from SteamDB",
+        steamDB: "https://steamdb.info/app/",
+        homepage: "https://sak32009.github.com/steamdb/",
+        support: "http://cs.rin.ru/forum/viewtopic.php?f=10&t=71837"
+    },
+    // YQL
+    yql: "https://query.yahooapis.com/v1/public/yql",
     // FORMAT
     format: {},
-    // SCRIPT INFO
-    script: {
-        name: "Get DLC Info from SteamDB",
-        homepage: "https://github.com/Sak32009/GetDLCInfoFromSteamDB",
-        support: "http://cs.rin.ru/forum/viewtopic.php?f=10&t=71837",
-        author: "Sak32009",
-        steamDB: "https://steamdb.info/app/"
-    },
     // OPTIONS
     options: {
         username: {
@@ -39,87 +51,137 @@ var GetDLCInfofromSteamDB = {
     },
 
     // RUN
-    run: function () {
+    run: function() {
 
         // GET PARAM
-        var param = this.getParam();
+        GetDLCInfofromSteamDB.steamDB.appID = GetDLCInfofromSteamDB.getParam("appid");
 
-        if (param !== false && param.length) {
+        if (GetDLCInfofromSteamDB.steamDB.appID !== false && GetDLCInfofromSteamDB.steamDB.appID.length && $.isNumeric(GetDLCInfofromSteamDB.steamDB.appID)) {
 
-            try {
+            // OVERLAY
+            GetDLCInfofromSteamDB.overlay("Wait!");
 
-                // PARSE JSON
-                this.steamDB = JSON.parse(param);
-                // VARS
-                this.steamDB.dlcsTot = Object.keys(this.steamDB.dlcs).length;
-                this.steamDB.configEXE = this.steamDB.configEXE.replace(/\/\//g, "/");
-                this.script.steamDB += this.steamDB.appID;
-                // INFO FROM STEAMDB
-                this.tabInfoFromSteamDB();
-                // LOAD FORMAT LIST
-                this.loadFormatList();
-                // GLOBAL OPTIONS
-                this.tabGlobalOptions();
-                // SUBMIT OPTIONS
-                this.submitOptions();
-                // RELOAD OPTIONS
-                this.reloadOptions();
-                // LOAD CUSTOM FORMAT LIST
-                this.loadCustomFormatList();
-                // EVENTS CUSTOM FORMAT LIST
-                this.eventsCustomFormatList();
-                // GET DLC LIST
-                this.getDLCList();
-
-            } catch (e) {
-                this.alert(e);
-            }
+            // REQUEST TO STEAMDB
+            GetDLCInfofromSteamDB.request(GetDLCInfofromSteamDB.yql,
+                "SELECT * FROM html WHERE url='" + GetDLCInfofromSteamDB.script.steamDB + GetDLCInfofromSteamDB.steamDB.appID + "'",
+                function($xml) {
+                    // SAVE DOM
+                    GetDLCInfofromSteamDB.steamDB.xml = $xml;
+                    // HIDE OVERLAY
+                    GetDLCInfofromSteamDB.overlay();
+                    // CALL OTHER FUNCTIONS
+                    GetDLCInfofromSteamDB.call();
+                });
 
         } else {
-            this.alert("No param or is empty");
+            GetDLCInfofromSteamDB.alert("You must enter the appid this: <strong>" + GetDLCInfofromSteamDB.script.homepage + "?appid=ID</strong>");
         }
 
     },
 
-    // INFO FROM STEAMDB
-    tabInfoFromSteamDB: function () {
+    // CALL
+    call: function() {
 
-        $("#GetDLCInfofromSteamDB_appID").attr("href", this.script.steamDB).text(this.steamDB.appID);
-        $("#GetDLCInfofromSteamDB_appIDName").text(this.steamDB.appIDName);
-        $("#GetDLCInfofromSteamDB_dlcs").text(Object.keys(this.steamDB.dlcs).join(", "));
-        $("#GetDLCInfofromSteamDB_dlcsTot").text(this.steamDB.dlcsTot);
-        $("#GetDLCInfofromSteamDB_configEXE").text(this.steamDB.configEXE);
-        $("#GetDLCInfofromSteamDB_configARG").text(this.steamDB.configARG);
-        $("#GetDLCInfoFromSteamDB_steam_appid").attr("href", Download.data(this.steamDB.appID));
+        // GET DATA FROM STEAMDB
+        GetDLCInfofromSteamDB.getDataFromSteamDB();
+        // CREATE STYLES
+        GetDLCInfofromSteamDB.createStyles();
+
+        // CHECK
+        var $check = GetDLCInfofromSteamDB.steamDB.xml.find(".tabnav-tab[data-target='#dlc']");
+
+        if ($check.length) {
+            // LOAD FORMAT LIST
+            GetDLCInfofromSteamDB.loadFormatList();
+            // GLOBAL OPTIONS
+            GetDLCInfofromSteamDB.tabGlobalOptions();
+            // SUBMIT OPTIONS
+            GetDLCInfofromSteamDB.submitOptions();
+            // LOAD OPTIONS
+            GetDLCInfofromSteamDB.loadOptions();
+            // LOAD CUSTOM FORMAT LIST
+            GetDLCInfofromSteamDB.loadCustomFormatList();
+            // EVENTS CUSTOM FORMAT LIST
+            GetDLCInfofromSteamDB.eventsCustomFormatList();
+            // GET DLC LIST
+            GetDLCInfofromSteamDB.getDLCList();
+        } else {
+            GetDLCInfofromSteamDB.alert("This appID doesn't have DLCs!");
+        }
+
+    },
+
+    // GET DATA
+    getDataFromSteamDB: function() {
+
+        // APPID LOGO
+        GetDLCInfofromSteamDB.steamDB.appIDLogo = GetDLCInfofromSteamDB.steamDB.xml.find("img.app-logo").attr("src");
+        // APPID BACKGROUND
+        GetDLCInfofromSteamDB.steamDB.appIDBg = GetDLCInfofromSteamDB.steamDB.xml.find(".header-app.header-wrapper").attr("style");
+        // APPID NAME
+        GetDLCInfofromSteamDB.steamDB.appIDName = GetDLCInfofromSteamDB.steamDB.xml.find("td[itemprop='name']").text().trim();
+
+        // DLCs
+        GetDLCInfofromSteamDB.steamDB.xml.find(".tab-pane#dlc .app[data-appid]").each(function() {
+
+            var $this = $(this);
+            var appID = $this.data("appid");
+            var appIDName = $this.find("td:nth-of-type(2)").text().trim();
+
+            GetDLCInfofromSteamDB.steamDB.dlcs[appID] = appIDName;
+            GetDLCInfofromSteamDB.steamDB.dlcsTot++;
+
+        });
+
+        // CONFIG
+        var $config = GetDLCInfofromSteamDB.steamDB.xml.find(".tab-pane#config > table:nth-of-type(1) tbody tr:nth-of-type(1)");
+        // CONFIG EXE
+        GetDLCInfofromSteamDB.steamDB.configEXE = $config.find("td:nth-of-type(2)").text().trim();
+        // CONFIG ARG
+        GetDLCInfofromSteamDB.steamDB.configARG = $config.find("td:nth-of-type(3)").text().trim();
+
+    },
+
+    // CREATE STYLES
+    createStyles: function() {
+
+        $("#header").attr("style", GetDLCInfofromSteamDB.steamDB.appIDBg);
+        $("#GetDLCInfofromSteamDB_appIDHeader").attr("src", GetDLCInfofromSteamDB.steamDB.appIDLogo);
+        $("*#GetDLCInfofromSteamDB_appID").text(GetDLCInfofromSteamDB.steamDB.appID);
+        $("*#GetDLCInfofromSteamDB_appIDName").text(GetDLCInfofromSteamDB.steamDB.appIDName);
+        $("*#GetDLCInfofromSteamDB_configEXE").text(GetDLCInfofromSteamDB.steamDB.configEXE);
+        $("*#GetDLCInfofromSteamDB_configARG").text(GetDLCInfofromSteamDB.steamDB.configARG);
 
     },
 
     // LOAD FORMAT LIST
-    loadFormatList: function () {
+    loadFormatList: function() {
 
-        // SELF
-        var self = this;
         // SELECT
         var select = $("#GetDLCInfoFromSteamDB_select");
 
-        $.each(this.format, function (key, values) {
+        $.each(GetDLCInfofromSteamDB.format, function(key, values) {
 
             var name = values.name;
             var options = values.options;
 
             // ADD OPTION
-            $("<option>").attr({"value": key}).text(name).appendTo(select);
+            $("<option>").attr({
+                "value": key
+            }).text(name).appendTo(select);
+
             // FORMAT OPTIONS
             if (Object.keys(options).length) {
                 $("#GetDLCInfofromSteamDB_nav_tabs").append("<li class='nav-item'><a class='nav-link' data-toggle='tab' href='#" + key + "'>" + name + "</a></li>");
-                $("#GetDLCInfofromSteamDB_tab_content").append("<div class='tab-pane' id='" + key + "'>" +
+                $("#GetDLCInfofromSteamDB_tab_content").append(
+                    "<div class='tab-pane' id='" + key + "'>" +
                     "   <form id='GetDLCInfoFromSteamDB_submit_options'>" +
                     "       <div class='card-block'>" +
                     "           <button type='submit' class='btn btn-block btn-success'>Save Options</button>" +
                     "       </div>" +
                     "       <div class='table-responsive'>" +
                     "           <table class='table table-bordered m-b-0'><tbody>" +
-                    self.htmlOptions(options) +
+                    GetDLCInfofromSteamDB.htmlOptions(options) +
                     "           </tbody></table>" +
                     "       </div>" +
                     "       <div class='card-block'>" +
@@ -143,25 +205,22 @@ var GetDLCInfofromSteamDB = {
     },
 
     // GLOBAL OPTIONS
-    tabGlobalOptions: function () {
+    tabGlobalOptions: function() {
 
-        $(".GetDLCInfoFromSteamDB_globalOptions table > tbody").html(this.htmlOptions(this.options));
+        $(".GetDLCInfoFromSteamDB_globalOptions table > tbody").html(GetDLCInfofromSteamDB.htmlOptions(GetDLCInfofromSteamDB.options));
 
     },
 
     // SUBMIT OPTIONS
-    submitOptions: function () {
-
-        // SELF
-        var self = this;
+    submitOptions: function() {
 
         // SUBMIT OPTIONS
-        $("form#GetDLCInfoFromSteamDB_submit_options").submit(function (e) {
+        $("form#GetDLCInfoFromSteamDB_submit_options").submit(function(e) {
 
             e.preventDefault();
 
             // SAVE DATA
-            $(this).find("input, select").each(function () {
+            $(this).find("input, select").each(function() {
 
                 var $this = $(this);
                 var val = $this.val();
@@ -181,16 +240,16 @@ var GetDLCInfofromSteamDB = {
         });
 
         // RESET OPTIONS
-        $("#GetDLCInfoFromSteamDB_resetOptions").click(function (e) {
+        $("#GetDLCInfoFromSteamDB_resetOptions").click(function(e) {
 
             e.preventDefault();
 
             // CLEAR STORAGE
             Storage.clear();
-            // RELOAD OPTIONS
-            self.reloadOptions();
+            // LOAD OPTIONS
+            GetDLCInfofromSteamDB.loadOptions();
             // LOAD CUSTOM FORMAT LIST
-            self.loadCustomFormatList();
+            GetDLCInfofromSteamDB.loadCustomFormatList();
             // ALERT
             alert("Restored default options!");
 
@@ -198,11 +257,10 @@ var GetDLCInfofromSteamDB = {
 
     },
 
-    // RELOAD OPTIONS
-    reloadOptions: function () {
+    // LOAD OPTIONS
+    loadOptions: function() {
 
-        // LOAD OPTIONS VALUE
-        $("form#GetDLCInfoFromSteamDB_submit_options").find("input, select").each(function () {
+        $("form#GetDLCInfoFromSteamDB_submit_options").find("input, select").each(function() {
 
             var $this = $(this);
             var type = $this.attr("type");
@@ -224,16 +282,14 @@ var GetDLCInfofromSteamDB = {
     },
 
     // LOAD CUSTOM FORMAT
-    loadCustomFormatList: function () {
+    loadCustomFormatList: function() {
 
-        // SELF
-        var self = this;
         // RESULT
         var result = "";
         // ALL CUSTOM FORMAT
         var custom_all = CustomFormat.all();
 
-        $.each(custom_all, function (key, value) {
+        $.each(custom_all, function(key, value) {
 
             var name = value.name;
             var format = value.format;
@@ -249,18 +305,15 @@ var GetDLCInfofromSteamDB = {
         });
 
         // ADD TO TABLE
-        $("#GetDLCInfoFromSteamDB_customFormatList > table tbody").html(result);
+        $("#GetDLCInfoFromSteamDB_customFormatList table tbody").html(result);
 
     },
 
     // EVENTS CUSTOM FORMAT LIST
-    eventsCustomFormatList: function () {
-
-        // SELF
-        var self = this;
+    eventsCustomFormatList: function() {
 
         // NEW
-        $("#GetDLCInfoFromSteamDB_customFormatNew form").submit(function (e) {
+        $("#GetDLCInfoFromSteamDB_customFormatNew form").submit(function(e) {
 
             e.preventDefault();
 
@@ -279,7 +332,7 @@ var GetDLCInfofromSteamDB = {
                 // ADD CUSTOM FORMAT
                 CustomFormat.add(fname, fformat);
                 // LOAD CUSTOM FORMAT LIST
-                self.loadCustomFormatList();
+                GetDLCInfofromSteamDB.loadCustomFormatList();
 
                 // ALERT
                 alert("Added!");
@@ -291,7 +344,7 @@ var GetDLCInfofromSteamDB = {
         });
 
         // REMOVE
-        $(document).on("click", "button#GetDLCInfoFromSteamDB_customFormatRemove", function (e) {
+        $(document).on("click", "button#GetDLCInfoFromSteamDB_customFormatRemove", function(e) {
 
             e.preventDefault();
 
@@ -302,7 +355,7 @@ var GetDLCInfofromSteamDB = {
             // REMOVE CUSTOM FORMAT
             CustomFormat.remove(id);
             // LOAD CUSTOM FORMAT LIST
-            self.loadCustomFormatList();
+            GetDLCInfofromSteamDB.loadCustomFormatList();
 
             // ALERT
             alert("Removed!");
@@ -310,21 +363,21 @@ var GetDLCInfofromSteamDB = {
         });
 
         // SAVE
-        $(document).on("click", "button#GetDLCInfoFromSteamDB_customFormatSave", function (e) {
+        $(document).on("click", "button#GetDLCInfoFromSteamDB_customFormatSave", function(e) {
 
             e.preventDefault();
 
             var $this = $(this);
             var tr = $this.closest("tr");
             var id = tr.data("id");
-            var textarea = tr.find("textarea");
+            var txtarea = tr.find("textarea");
 
-            if (textarea.length) {
+            if (txtarea.length) {
 
                 // ADD CUSTOM FORMAT
-                CustomFormat.save(id, textarea.val());
+                CustomFormat.save(id, txtarea.val());
                 // LOAD CUSTOM FORMAT LIST
-                self.loadCustomFormatList();
+                GetDLCInfofromSteamDB.loadCustomFormatList();
 
                 // ALERT
                 alert("Saved!");
@@ -336,7 +389,7 @@ var GetDLCInfofromSteamDB = {
         });
 
         // VIEW
-        $(document).on("click", "button#GetDLCInfoFromSteamDB_customFormatView", function (e) {
+        $(document).on("click", "button#GetDLCInfoFromSteamDB_customFormatView", function(e) {
 
             e.preventDefault();
 
@@ -346,7 +399,7 @@ var GetDLCInfofromSteamDB = {
             var custom_format = CustomFormat.get(id);
             var modal = $("#GetDLCInfoFromSteamDB_customFormatViewModal");
             modal.find(".modal-title").text(custom_format.name);
-            modal.find(".modal-body textarea").val(self.dlcFormatsStr(custom_format.format));
+            modal.find(".modal-body textarea").val(GetDLCInfofromSteamDB.dlcFormatsStr(custom_format.format));
             modal.modal("show");
 
         });
@@ -354,15 +407,13 @@ var GetDLCInfofromSteamDB = {
     },
 
     // GET DLC LIST
-    getDLCList: function () {
+    getDLCList: function() {
 
-        // SELF
-        var self = this;
         // SUBMIT
-        var submit = $("#GetDLCInfoFromSteamDB_submit");
+        var submt = $("#GetDLCInfoFromSteamDB_submit");
 
         // EVENT
-        submit.submit(function (e) {
+        submt.submit(function(e) {
 
             e.preventDefault();
 
@@ -370,23 +421,23 @@ var GetDLCInfofromSteamDB = {
             var result = "";
             var $select = $this.find("#GetDLCInfoFromSteamDB_select option:selected");
             var format_key = $select.val();
-            var format_data = self.format[format_key];
+            var format_data = GetDLCInfofromSteamDB.format[format_key];
             var format_title = format_data.name;
             var format_ini = format_data.ini;
             var format_idata = format_data.data;
 
             // INFO
-            result += "; " + self.script.name + " by " + self.script.author + "\n" +
+            result += "; " + GetDLCInfofromSteamDB.script.name + " by " + GetDLCInfofromSteamDB.script.author + "\n" +
                 "; Format: " + format_title + "\n" +
-                "; AppID: " + self.steamDB.appID + "\n" +
-                "; AppID Name: " + self.steamDB.appIDName + "\n" +
-                "; Total DLCs: " + self.steamDB.dlcsTot + "\n" +
-                "; SteamDB: " + self.script.steamDB + "\n" +
-                "; Userscript: " + self.script.homepage + "\n" +
-                "; Support: " + self.script.support + "\n\n";
+                "; AppID: " + GetDLCInfofromSteamDB.steamDB.appID + "\n" +
+                "; AppID Name: " + GetDLCInfofromSteamDB.steamDB.appIDName + "\n" +
+                "; Total DLCs: " + GetDLCInfofromSteamDB.steamDB.dlcsTot + "\n" +
+                "; SteamDB: " + GetDLCInfofromSteamDB.script.steamDB + GetDLCInfofromSteamDB.steamDB.appID + "\n" +
+                "; Website: " + GetDLCInfofromSteamDB.script.homepage + "?appid=" + GetDLCInfofromSteamDB.steamDB.appID + "\n" +
+                "; Support: " + GetDLCInfofromSteamDB.script.support + "\n\n";
 
             // FORMAT DATA
-            result += self.dlcFormatsStr(format_idata);
+            result += GetDLCInfofromSteamDB.dlcFormatsStr(format_idata);
 
             // FILE INI
             $("#GetDLCInfoFromSteamDB_ini").attr({
@@ -413,19 +464,19 @@ var GetDLCInfofromSteamDB = {
 
         // ..... SAVE SELECTION GET DLC LIST
         if (Storage.get("save_selection") == "true" && Storage.get("save_selection_getDLCList") == "true") {
-            submit.trigger("submit");
+            submt.trigger("submit");
         }
         // .....
 
     },
 
     // HTML OPTIONS
-    htmlOptions: function (options) {
+    htmlOptions: function(options) {
 
         // RESULT
         var result = "";
 
-        $.each(options, function (key, values) {
+        $.each(options, function(key, values) {
 
             var title = values.title;
             var type = values.type;
@@ -449,7 +500,7 @@ var GetDLCInfofromSteamDB = {
 
                 result += "<select class='form-control' name='" + key + "'>";
 
-                $.each(select_options, function (key, value) {
+                $.each(select_options, function(key, value) {
 
                     var selected = key == select_default ? "selected" : "";
 
@@ -470,23 +521,21 @@ var GetDLCInfofromSteamDB = {
     },
 
     // DLC EACH
-    dlcEach: function (string, from_zero, format_index, format_index_zeros) {
+    dlcEach: function(string, from_zero, format_index, format_index_zeros) {
 
-        // SELF
-        var self = this;
         // RESULT
         var result = "";
         // INDEX START
         var index = from_zero ? 0 : -1;
 
-        $.each(this.steamDB.dlcs, function (id, name) {
+        $.each(GetDLCInfofromSteamDB.steamDB.dlcs, function(id, name) {
 
             index++;
 
-            result += self.dlcEachFormat(string, {
+            result += GetDLCInfofromSteamDB.dlcEachFormat(string, {
                 "dlc_id": id,
                 "dlc_name": name,
-                "dlc_index": self.dlcIndexFormat(index, format_index, format_index_zeros)
+                "dlc_index": GetDLCInfofromSteamDB.dlcIndexFormat(index, format_index, format_index_zeros)
             });
 
         });
@@ -496,7 +545,7 @@ var GetDLCInfofromSteamDB = {
     },
 
     // DLC INDEX FORMAT
-    dlcIndexFormat: function (val, format, zero) {
+    dlcIndexFormat: function(val, format, zero) {
 
         if (format) {
 
@@ -512,9 +561,9 @@ var GetDLCInfofromSteamDB = {
     },
 
     // DLC EACH FORMAT
-    dlcEachFormat: function (str, values) {
+    dlcEachFormat: function(str, values) {
 
-        $.each(values, function (key, value) {
+        $.each(values, function(key, value) {
 
             var re = new RegExp("{" + key + "}", "g");
 
@@ -527,17 +576,13 @@ var GetDLCInfofromSteamDB = {
     },
 
     // DLC FORMATS STR
-    dlcFormatsStr: function (str) {
+    dlcFormatsStr: function(str) {
 
-        // SELF
-        var self = this;
-
-        // SCRIPT
         var re_match = str.match(/\[(\w+)(?:\=(.*))?\]([^\[]+)\[\/(\w+)\]/g);
 
         if (re_match !== null && re_match.length) {
 
-            $.each(re_match, function (i, val) {
+            $.each(re_match, function(i, val) {
 
                 var re_exec = /\[(\w+)(?:\=(.*))?\]([^\[]+)\[\/(\w+)\]/g.exec(val);
 
@@ -554,8 +599,8 @@ var GetDLCInfofromSteamDB = {
 
                         switch (bbcode_name) {
                             case "steamdb":
-                                if (bbcode_val in self.steamDB) {
-                                    str = str.replace(val, self.steamDB[bbcode_val]);
+                                if (bbcode_val in GetDLCInfofromSteamDB.steamDB) {
+                                    str = str.replace(val, GetDLCInfofromSteamDB.steamDB[bbcode_val]);
                                 }
                                 break;
                             case "option":
@@ -564,7 +609,7 @@ var GetDLCInfofromSteamDB = {
                                 }
                                 break;
                             case "dlcEach":
-                                str = str.replace(val, self.dlcEach(bbcode_val, bbcode_opts[0] == "true", bbcode_opts[1] == "true", bbcode_opts[2] || 0));
+                                str = str.replace(val, GetDLCInfofromSteamDB.dlcEach(bbcode_val, bbcode_opts[0] == "true", bbcode_opts[1] == "true", bbcode_opts[2] || 0));
                                 break;
                         }
 
@@ -581,18 +626,62 @@ var GetDLCInfofromSteamDB = {
     },
 
     // GET PARAM
-    getParam: function () {
+    getParam: function(param) {
 
-        var query = window.location.search.substr(1);
+        var search = window.location.search.substr(1);
+        var ssplit = search.split("?");
 
-        return decodeURIComponent(query);
+        for (var i = 0; i < ssplit.length; i++) {
+
+            var qsplit = ssplit[i].split("=");
+            var key = qsplit[0];
+            var val = qsplit[1];
+
+            if (key == param) {
+
+                return decodeURIComponent(val);
+
+            }
+
+        }
+
+        return false;
+
+    },
+
+    // REQUEST
+    request: function(url, query, callback) {
+
+        $.get(url, {
+            q: query,
+            format: "xml"
+        }, function(data) {
+
+            callback($(data));
+
+        });
+
+    },
+
+    // OVERLAY
+    overlay: function(txt) {
+
+        if (typeof txt !== "undefined") {
+
+            $(".overlay").show().find(".overlay-text").text(txt);
+
+        } else {
+
+            $(".overlay").hide();
+
+        }
 
     },
 
     // ALERT
-    alert: function (str) {
+    alert: function(str) {
 
-        $("main > .container-fluid").html("<div class='alert alert-danger m-a-2'>" + str + "</div>");
+        $("#main").html("<div class='alert alert-danger m-a-2'>" + str + "</div>");
 
     }
 
@@ -602,7 +691,7 @@ var GetDLCInfofromSteamDB = {
 var Download = {
 
     // DATA
-    data: function (str) {
+    data: function(str) {
 
         return "data:text/plain;charset=utf-8," + encodeURIComponent(str);
 
@@ -617,14 +706,14 @@ var Storage = {
     prefix: "GetDLCInfoFromSteamDB_",
 
     // GET OPTION
-    get: function (name) {
+    get: function(name) {
 
         return window.localStorage.getItem(this.prefix + name);
 
     },
 
     // GET OPTION IF NOT EXISTS RETURN DEFAULT
-    getDef: function (name, def) {
+    getDef: function(name, def) {
 
         var item = Storage.get(name);
 
@@ -633,28 +722,28 @@ var Storage = {
     },
 
     // SET OPTION
-    set: function (name, val) {
+    set: function(name, val) {
 
         return window.localStorage.setItem(this.prefix + name, val);
 
     },
 
     // REMOVE OPTION
-    remove: function (name) {
+    remove: function(name) {
 
         return window.localStorage.removeItem(this.prefix + name);
 
     },
 
     // CLEAR OPTIONS
-    clear: function () {
+    clear: function() {
 
         window.localStorage.clear();
 
     },
 
     // CHECK OPTION
-    check: function (item) {
+    check: function(item) {
 
         return item !== null && item.length;
 
@@ -666,7 +755,7 @@ var Storage = {
 var CustomFormat = {
 
     // GET ALL
-    all: function () {
+    all: function() {
 
         var data = Storage.get("custom_format");
 
@@ -675,14 +764,14 @@ var CustomFormat = {
     },
 
     // ---
-    set: function (data) {
+    set: function(data) {
 
         Storage.set("custom_format", JSON.stringify(data));
 
     },
 
     // GET CUSTOM FORMAT
-    get: function (uniqueid) {
+    get: function(uniqueid) {
 
         var data = this.all();
 
@@ -691,7 +780,7 @@ var CustomFormat = {
     },
 
     // ADD FORMAT
-    add: function (name, val) {
+    add: function(name, val) {
 
         var data = this.all();
         var uniqueid = "custom_format_" + new Date().getTime();
@@ -706,13 +795,13 @@ var CustomFormat = {
     },
 
     // SAVE FORMAT
-    save: function (uniqueid, val) {
+    save: function(uniqueid, val) {
 
         var data = this.all();
 
         if (uniqueid in data) {
 
-            data[uniqueid]["format"] = val;
+            data[uniqueid].format = val;
 
             this.set(data);
 
@@ -721,7 +810,7 @@ var CustomFormat = {
     },
 
     // REMOVE FORMAT
-    remove: function (uniqueid) {
+    remove: function(uniqueid) {
 
         var data = this.all();
 
