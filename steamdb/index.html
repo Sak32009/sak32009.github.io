@@ -2,17 +2,14 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="cleartype" content="on">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Sak32009 - Get DLC Info from SteamDB</title>
-    <!-- BASE -->
-    <base href="https://sak32009.github.io/steamdb/">
+    <!-- BASE
+    <base href="https://sak32009.github.io/steamdb/"> -->
     <!-- SEO -->
     <meta name="author" content="Sak32009">
     <meta name="description" content="Get DLC Info from SteamDB">
-    <!-- AUTHOR -->
-    <link rel="author" href="../humans.txt">
     <!-- FAVICON -->
     <link rel="shortcut icon" href="https://steamdb.info/favicon.ico">
     <link rel="apple-touch-icon" href="https://steamdb.info/apple-touch-icon.png" sizes="152x152">
@@ -23,19 +20,15 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" rel="stylesheet">
     <!-- FONT AWESOME -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-    <!-- FONT ROBOTO -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <!-- CUSTOM STYLE -->
-    <link href="css/bootstrap-custom.css" rel="stylesheet">
-    <link href="css/bootstrap-navbar-responsive.css" rel="stylesheet">
-    <!-- GOOGLE ANALYTICS -->
-    <script src="js/gagol.js"></script>
+    <link href="css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="css/bootstrap-navbar-responsive.min.css" rel="stylesheet">
 </head>
 <body>
     <!-- NAV -->
     <nav id="nav" class="navbar navbar-full navbar-dark bg-inverse navbar-responsive">
         <div class="container">
-            <div class="navbar-brand"><img src="https://steamdb.info/static/logos/header.svg" alt="SteamDB" class="img-fluid-logo"> Get DLC from SteamDB</div>
+            <div class="navbar-brand"><img src="https://steamdb.info/static/logos/header.svg" alt="SteamDB" class="img-fluid-logo d-inline-block"> Get DLC from SteamDB</div>
             <div class="clearfix hidden-sm-up">
                 <button class="btn btn-outline-secondary navbar-toggler pull-xs-right" type="button" data-toggle="collapse" data-target="#navbar-toggleable">
                     <i class="fa fa-bars" aria-hidden="true"></i>
@@ -52,6 +45,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="http://cs.rin.ru/forum/viewtopic.php?f=10&t=71837" target="_blank"><i class="fa fa-question-circle" aria-hidden="true"></i> Support</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../" target="_blank"><i class="fa fa-beer" aria-hidden="true"></i> Sak32009</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -61,7 +57,7 @@
         <div class="container p-y-2">
             <div class="row">
                 <div class="col-sm-6 text-xs-center">
-                    <img id="GetDLCInfofromSteamDB_appIDHeader" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=Header%20Img&w=450&h=210" alt="Header Steam" class="img-fluid m-x-auto m-b-1">
+                    <img id="GetDLCInfofromSteamDB_appIDHeader" src="img/header.png" alt="Header Steam" class="img-fluid m-x-auto m-b-1">
                 </div>
                 <div class="col-sm-6">
                     <div class="card bg-inverse">
@@ -127,16 +123,16 @@
                             <select class="form-control" id="GetDLCInfoFromSteamDB_select"></select>
                         </div>
                         <button type="submit" class="btn btn-success">Get DLC List</button>
-                    </form>
-                    <div class="dropdown d-inline-block">
-                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-                            Download
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="javascript:;" id="GetDLCInfoFromSteamDB_ini">format.ini</a>
-                            <a class="dropdown-item" href="#" id="GetDLCInfoFromSteamDB_steam_appid" download="steam_appid.txt">steam_appid.txt</a>
+                        <div class="dropdown d-inline-block">
+                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                                Download
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" href="javascript:;" id="GetDLCInfoFromSteamDB_ini">format.ini</a>
+                                <a class="dropdown-item" href="#" id="GetDLCInfoFromSteamDB_steam_appid" download="steam_appid.txt">steam_appid.txt</a>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
                 <textarea class="form-control no-resize" id="GetDLCInfoFromSteamDB_textarea" rows="25" placeholder="..." readonly></textarea>
             </div>
@@ -263,12 +259,6 @@ language = [option=english]gamelanguage[/option]
             </div>
         </div>
     </main>
-    <!-- FOOTER -->
-    <footer id="footer" class="bg-inverse">
-        <div class="container-fluid text-xs-center p-y-1">
-            &copy; Sak32009 2016
-        </div>
-    </footer>
     <!-- MODAL CUSTOM FORMAT -->
     <div id="GetDLCInfoFromSteamDB_customFormatViewModal" class="modal fade">
         <div class="modal-dialog">
@@ -290,11 +280,13 @@ language = [option=english]gamelanguage[/option]
         <table>
             <tbody>
                 <tr>
-                    <td class="overlay-text">Overlay</td>
+                    <td class="overlay-text">Overlay Text</td>
                 </tr>
             </tbody>
         </table>
     </div>
+    <!-- GOOGLE ANALYTICS -->
+    <script src="../gagol.js"></script>
     <!-- JQUERY -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <!-- TETHER -->
@@ -302,20 +294,20 @@ language = [option=english]gamelanguage[/option]
     <!-- BOOTSTRAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.4/js/bootstrap.min.js"></script>
     <!-- GETDLCINFOFROMSTEAMDB -->
-    <script src="js/GetDLCInfofromSteamDB.js"></script>
+    <script src="jsmin/GetDLCInfofromSteamDB.js"></script>
     <!-- GETDLCINFOFROMSTEAMDB DATA -->
-    <script src="js/GetDLCInfofromSteamDB/lumaemu.js"></script>
-    <script src="js/GetDLCInfofromSteamDB/lumaemu_o.js"></script>
-    <script src="js/GetDLCInfofromSteamDB/creamAPI.js"></script>
-    <script src="js/GetDLCInfofromSteamDB/creamAPI_o.js"></script>
-    <script src="js/GetDLCInfofromSteamDB/smartsteamemu_o.js"></script>
-    <script src="js/GetDLCInfofromSteamDB/reloaded.js"></script>
-    <script src="js/GetDLCInfofromSteamDB/skidrow.js"></script>
-    <script src="js/GetDLCInfofromSteamDB/3dmgame.js"></script>
-    <script src="js/GetDLCInfofromSteamDB/codex.js"></script>
-    <script src="js/GetDLCInfofromSteamDB/codex_t.js"></script>
-    <script src="js/GetDLCInfofromSteamDB/ali213.js"></script>
-    <script src="js/GetDLCInfofromSteamDB/revolt.js"></script>
+    <script src="jsmin/GetDLCInfofromSteamDB/lumaemu.js"></script>
+    <script src="jsmin/GetDLCInfofromSteamDB/lumaemu_o.js"></script>
+    <script src="jsmin/GetDLCInfofromSteamDB/creamAPI.js"></script>
+    <script src="jsmin/GetDLCInfofromSteamDB/creamAPI_o.js"></script>
+    <script src="jsmin/GetDLCInfofromSteamDB/smartsteamemu_o.js"></script>
+    <script src="jsmin/GetDLCInfofromSteamDB/reloaded.js"></script>
+    <script src="jsmin/GetDLCInfofromSteamDB/skidrow.js"></script>
+    <script src="jsmin/GetDLCInfofromSteamDB/3dmgame.js"></script>
+    <script src="jsmin/GetDLCInfofromSteamDB/codex.js"></script>
+    <script src="jsmin/GetDLCInfofromSteamDB/codex_t.js"></script>
+    <script src="jsmin/GetDLCInfofromSteamDB/ali213.js"></script>
+    <script src="jsmin/GetDLCInfofromSteamDB/revolt.js"></script>
     <!-- GETDLCINFOFROMSTEAMDB RUN -->
     <script>GetDLCInfofromSteamDB.run();</script>
 </body>
