@@ -157,7 +157,7 @@ GetDLCInfofromSteamDB.format.lumaemu = {
     "EnableVR = 0\n\n" +
     "[RemoteStorage]\n" +
     "SaveInCustomPath = [option=0]lumaemu_saveincustompath[/option]\n" +
-    "Path = [option=\0]lumaemu_path[/option]\n\n" +
+    "Path = [option=]lumaemu_path[/option]\n\n" +
     "[LumaGameLauncher]\n" +
     "GameExe = [steamdb]configEXE[/steamdb] -appid [steamdb]appID[/steamdb] [steamdb]configARG[/steamdb]\n" +
     "LoadLumaCEG = 0\n" +
