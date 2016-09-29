@@ -1,1 +1,0 @@
-GetDLCInfofromSteamDB.format.revolt={name:"REVOLT",ini:"REVOLT.ini",options:{},data:"[DLC]\nDLCEnumBase = [steamdb]appID[/steamdb]\nDLCEnumCount = [steamdb]dlcsTot[/steamdb]\nDefault = false\n\n[dlcEach]; {dlc_name}\n{dlc_index} = {dlc_id}\n[/dlcEach]\n[Subscriptions]\nDefault = false\n\n[dlcEach]; {dlc_name}\n{dlc_index} = true\n[/dlcEach]"};
