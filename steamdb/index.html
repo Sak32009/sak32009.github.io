@@ -10,135 +10,145 @@
     <!-- SEO -->
     <meta name="author" content="Sak32009">
     <meta name="description" content="Get DLC Info from SteamDB">
+    <meta name="robots" content="index,follow,noodp">
+    <meta name="googlebot" content="index,follow">
     <!-- FAVICON -->
-    <link rel="shortcut icon" href="https://steamdb.info/favicon.ico">
-    <link rel="apple-touch-icon" href="https://steamdb.info/apple-touch-icon.png" sizes="152x152">
-    <link rel="icon" type="image/png" href="https://steamdb.info/static/logos/favicon-16x16.png" sizes="16x16">
-    <link rel="icon" type="image/png" href="https://steamdb.info/static/logos/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="https://steamdb.info/static/logos/favicon-196x196.png" sizes="196x196">
+    <link rel="icon" href="img/16x16.png" sizes="16x16" type="image/png">
+    <link rel="icon" href="img/32x32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="img/48x48.png" sizes="48x48" type="image/png">
+    <link rel="icon" href="img/62x62.png" sizes="62x62" type="image/png">
+    <link rel="icon" href="img/192x192.png" sizes="192x192" type="image/png">
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.144x144.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="img/apple-touch-icon.57x57.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon.72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon.114x114.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="img/apple-touch-icon.144x144.png">
     <!-- BOOTSTRAP -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.4/css/bootstrap.min.css"
+          rel="stylesheet">
     <!-- FONT AWESOME -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
     <!-- CUSTOM STYLE -->
     <link href="css/bootstrap-custom.min.css" rel="stylesheet">
-    <link href="css/bootstrap-navbar-responsive.min.css" rel="stylesheet">
 </head>
 <body>
-    <!-- NAV -->
-    <nav id="nav" class="navbar navbar-full navbar-dark bg-inverse navbar-responsive">
+<!-- NAV -->
+<nav id="nav" class="navbar navbar-full navbar-dark bg-inverse">
+    <div class="container">
+        <div class="navbar-brand"><i class="fa fa-database" aria-hidden="true"></i></div>
+        <div class="clearfix hidden-lg-up">
+            <ul class="nav navbar-nav pull-xs-right">
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:;" data-toggle="collapse"
+                       data-target="#nav .navbar-toggleable-md"><i class="fa fa-bars" aria-hidden="true"></i></a>
+                </li>
+            </ul>
+        </div>
+        <div class="collapse navbar-toggleable-md" id="navbar-toggleable">
+            <ul class="nav navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/Sak32009/GetDLCInfoFromSteamDB" target="_blank"><i
+                            class="fa fa-github" aria-hidden="true"></i> Userscript</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/Sak32009/sak32009.github.io/tree/master/steamdb"
+                       target="_blank"><i class="fa fa-github" aria-hidden="true"></i> Website</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://cs.rin.ru/forum/viewtopic.php?f=10&t=71837" target="_blank"><i
+                            class="fa fa-question-circle" aria-hidden="true"></i> Support</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../" target="_blank"><i class="fa fa-beer" aria-hidden="true"></i>
+                        Sak32009</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav pull-lg-right">
+                <li class="nav-item">
+                    <form method="get">
+                        <div class="input-group">
+                            <input type="search" autocomplete="on" class="form-control" name="appid"
+                                   placeholder="AppID 550, 570, ...">
+                            <span class="input-group-btn">
+                                    <button class="btn btn-success" type="submit"><i class="fa fa-search"
+                                                                                     aria-hidden="true"></i></button>
+                            </span>
+                        </div>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- MAIN -->
+<main id="main">
+    <!-- HEADER -->
+    <header id="header">
         <div class="container">
-            <div class="navbar-brand"><img src="https://steamdb.info/static/logos/header.svg" alt="SteamDB" class="img-fluid-logo d-inline-block"><span class="hidden-xs-down"> Get DLC from SteamDB</span></div>
-            <div class="clearfix hidden-sm-up">
-                <button class="btn btn-outline-secondary navbar-toggler pull-xs-right" type="button" data-toggle="collapse" data-target="#navbar-toggleable">
-                    <i class="fa fa-bars" aria-hidden="true"></i>
-                </button>
-            </div>
-            <div class="collapse navbar-toggleable-xs" id="navbar-toggleable">
-                <ul class="nav navbar-nav pull-xs-right">
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://github.com/Sak32009/GetDLCInfoFromSteamDB" target="_blank"><i class="fa fa-github" aria-hidden="true"></i> Userscript</a>
+            <img id="GetDLCInfofromSteamDB_appIDHeader" src="img/header.png" alt="Header Steam"
+                 class="img-fluid m-x-auto p-y-2">
+            <!-- NAV TABS -->
+            <nav id="nav_tabs" class="navbar navbar-full navbar-dark bg-inverse p-x-0">
+                <ul class="nav navbar-nav text-xs-center">
+                    <li class="nav-item col-xs-12 col-sm-2 m-l-0">
+                        <a class="nav-link active" data-toggle="tab" href="#get_dlcs_list"><i class="fa fa-list"
+                                                                                              aria-hidden="true"></i>
+                            Get
+                            DLCs
+                            List</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://github.com/Sak32009/sak32009.github.io/tree/master/steamdb" target="_blank"><i class="fa fa-github" aria-hidden="true"></i> Website</a>
+                    <li class="nav-item col-xs-12 col-sm-2 m-l-0">
+                        <a class="nav-link" data-toggle="tab" href="#options"><i class="fa fa-cogs"
+                                                                                 aria-hidden="true"></i>
+                            Options</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="http://cs.rin.ru/forum/viewtopic.php?f=10&t=71837" target="_blank"><i class="fa fa-question-circle" aria-hidden="true"></i> Support</a>
+                    <li class="nav-item col-xs-12 col-sm-2 m-l-0">
+                        <a class="nav-link" data-toggle="tab" href="#custom_format"><i class="fa fa-plus"
+                                                                                       aria-hidden="true"></i> Custom
+                            Format</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../" target="_blank"><i class="fa fa-beer" aria-hidden="true"></i> Sak32009</a>
+                    <li class="nav-item col-xs-12 col-sm-2 m-l-0">
+                        <a class="nav-link text-danger" href="javascript:;" id="GetDLCInfoFromSteamDB_resetOptions"><i
+                                class="fa fa-refresh" aria-hidden="true"></i> Reset Options</a>
                     </li>
-                    <li class="nav-item">
-                        <form method="get" class="form-inline">
+                    <li class="nav-item col-xs-12 col-sm-4 m-l-0">
+                        <form id="GetDLCInfoFromSteamDB_submit">
                             <div class="input-group">
-                                <input type="text" class="form-control" name="appid" placeholder="Enter AppID..." required>
-                                <span class="input-group-btn">
-                                    <button class="btn btn-success" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-                                </span>
+                                <select class="form-control" id="GetDLCInfoFromSteamDB_select"
+                                        title="Select Format"></select>
+                                <span class="input-group-btn"><button type="submit" class="btn btn-success"><i
+                                        class="fa fa-check" aria-hidden="true"></i></button></span>
                             </div>
                         </form>
                     </li>
                 </ul>
-            </div>
-        </div>
-    </nav>
-    <!-- HEADER -->
-    <header id="header">
-        <div class="container p-y-2">
-            <div class="row">
-                <div class="col-sm-7">
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-inverse table-dark">
-                            <thead>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th>AppID</th>
-                                    <td id="GetDLCInfofromSteamDB_appID">-</td>
-                                </tr>
-                                <tr>
-                                    <th>AppID Name</th>
-                                    <td id="GetDLCInfofromSteamDB_appIDName">-</td>
-                                </tr>
-                            </tbody>
-                            <thead>
-                                <tr>
-                                    <th>Config EXE</th>
-                                    <th>Config Arg</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td id="GetDLCInfofromSteamDB_configEXE">-</td>
-                                    <td id="GetDLCInfofromSteamDB_configARG">-</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="col-sm-5">
-                    <img id="GetDLCInfofromSteamDB_appIDHeader" src="img/header.png" alt="Header Steam" class="img-fluid">
-                </div>
-            </div>
+            </nav>
         </div>
     </header>
-    <!-- MAIN -->
-    <main id="main">
-        <nav id="nav" class="navbar navbar-full navbar-dark bg-inverse">
-            <ul class="nav navbar-nav navbar-nav-inline text-xs-center">
-                <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#get_dlcs_list"><i class="fa fa-list" aria-hidden="true"></i> Get DLC List</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#options"><i class="fa fa-cogs" aria-hidden="true"></i> Options</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#custom_format"><i class="fa fa-plus" aria-hidden="true"></i> Custom Format</a>
-                </li>
-                <li class="nav-item">
-                    <button type="button" class="btn btn-danger" id="GetDLCInfoFromSteamDB_resetOptions"><i class="fa fa-refresh" aria-hidden="true"></i> Reset All</button>
-                </li>
-            </ul>
-        </nav>
-        <div class="container-fluid tab-content m-y-2">
-            <!-- HOME -->
+    <!-- CONTAINER -->
+    <div class="container m-y-2">
+        <div class="tab-content">
+            <!-- GET DLCS LIST -->
             <div class="tab-pane active" id="get_dlcs_list">
-                <div class="pull-xs-right m-b-1">
-                    <form class="form-inline" id="GetDLCInfoFromSteamDB_submit">
-                        <div class="form-group">
-                            <select class="form-control" id="GetDLCInfoFromSteamDB_select"></select>
-                        </div>
-                        <button type="submit" class="btn btn-success">Get DLC List</button>
-                        <div class="dropdown d-inline-block">
-                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Download</button>
+                <div class="p-relative">
+                    <div class="p-absolute-textarea">
+                        <div class="dropdown">
+                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                                <i class="fa fa-download" aria-hidden="true"></i> Download
+                            </button>
                             <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="javascript:;" id="GetDLCInfoFromSteamDB_ini">format.ini</a>
-                                <a class="dropdown-item" href="#" id="GetDLCInfoFromSteamDB_steam_appid" download="steam_appid.txt">steam_appid.txt</a>
+                                <a class="dropdown-item" href="javascript:;" id="GetDLCInfoFromSteamDB_ini"><i
+                                        class="fa fa-file-text" aria-hidden="true"></i>
+                                    format.ini</a>
+                                <a class="dropdown-item" href="javascript:;" id="GetDLCInfoFromSteamDB_steam_appid"
+                                   download="steam_appid.txt"><i class="fa fa-file-text-o" aria-hidden="true"></i>
+                                    steam_appid.txt</a>
                             </div>
                         </div>
-                    </form>
+                    </div>
+                    <textarea class="form-control no-resize" id="GetDLCInfoFromSteamDB_textarea" rows="25"
+                              placeholder="..." readonly></textarea>
                 </div>
-                <textarea class="form-control no-resize" id="GetDLCInfoFromSteamDB_textarea" rows="25" placeholder="..." readonly></textarea>
             </div>
             <!-- OPTIONS -->
             <div class="tab-pane" id="options">
@@ -149,15 +159,32 @@
             </div>
             <!-- CUSTOM FORMAT -->
             <div class="tab-pane" id="custom_format">
+                <!-- CUSTOM FORMAT NEW -->
+                <div id="GetDLCInfoFromSteamDB_customFormatNew" class="card">
+                    <div class="card-header text-xs-center">Add Format</div>
+                    <div class="card-block">
+                        <form method="post">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-file-o" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" name="name" placeholder="Format Name">
+                            </div>
+                            <div class="form-group m-t-1">
+                                <textarea class="form-control" name="format" rows="7"
+                                          placeholder="Raw Format"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-success btn-block">Add Format</button>
+                        </form>
+                    </div>
+                </div>
+                <!-- CUSTOM FORMAT TABS -->
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
-                        <a class="nav-link active" data-toggle="tab" href="#GetDLCInfoFromSteamDB_customFormatList"><i class="fa fa-list-alt" aria-hidden="true"></i> List</a>
+                        <a class="nav-link active" data-toggle="tab" href="#GetDLCInfoFromSteamDB_customFormatList"><i
+                                class="fa fa-list-alt" aria-hidden="true"></i> List</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#GetDLCInfoFromSteamDB_customFormatNew"><i class="fa fa-file-text-o" aria-hidden="true"></i> New</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#GetDLCInfoFromSteamDB_customFormatInfo"><i class="fa fa-info" aria-hidden="true"></i> Info</a>
+                        <a class="nav-link" data-toggle="tab" href="#GetDLCInfoFromSteamDB_customFormatInfo"><i
+                                class="fa fa-info" aria-hidden="true"></i> Info</a>
                     </li>
                 </ul>
                 <div class="card border-top-0">
@@ -165,32 +192,17 @@
                         <!-- CUSTOM FORMAT LIST-->
                         <div class="tab-pane active" id="GetDLCInfoFromSteamDB_customFormatList">
                             <div class="table-responsive">
-                                <table class="table table-bordered m-b-0">
+                                <table class="table table-bordered m-b-0 table-border-top-0">
                                     <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Format</th>
-                                            <th>Options</th>
-                                        </tr>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Raw Format</th>
+                                        <th>Format</th>
+                                        <th>Options</th>
+                                    </tr>
                                     </thead>
                                     <tbody></tbody>
                                 </table>
-                            </div>
-                        </div>
-                        <!-- CUSTOM FORMAT NEW -->
-                        <div class="tab-pane" id="GetDLCInfoFromSteamDB_customFormatNew">
-                            <div class="card-block">
-                                <form method="post">
-                                    <div class="form-group">
-                                        <label for="iname">Name</label>
-                                        <input type="text" id="iname" class="form-control" name="name" placeholder="Custom Format">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="iformat">Format</label>
-                                        <textarea id="iformat" class="form-control" name="format" rows="7" placeholder="Format"></textarea>
-                                    </div>
-                                    <button type="submit" class="btn btn-success btn-block">Save Format</button>
-                                </form>
                             </div>
                         </div>
                         <!-- CUSTOM FORMAT INFO-->
@@ -209,32 +221,33 @@ language = [option=english]gamelanguage[/option]
                             <div class="table-responsive">
                                 <table class="table table-bordered m-b-0">
                                     <thead>
-                                        <tr>
-                                            <th>Tag</th>
-                                            <th>Value(s)</th>
-                                            <th>Ad. Info</th>
-                                        </tr>
+                                    <tr>
+                                        <th>Tag</th>
+                                        <th>Value(s)</th>
+                                        <th>Ad. Info</th>
+                                    </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>steamdb</td>
-                                            <td>appID, appIDName, dlcsTot, configEXE, configARG</td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>option</td>
-                                            <td>username, gamelanguage</td>
-                                            <td><b>option=Sak32009</b> Need default value!</td>
-                                        </tr>
-                                        <tr>
-                                            <td>dlcEach</td>
-                                            <td><b>{dlc_id}</b> = DLC APPID
-                                                <br><b>{dlc_name}</b> = DLC NAME
-                                                <br><b>{dlc_index}</b> = DLC INDEX
-                                            </td>
-                                            <td>With <b>dlcEach=true</b> DLC Index start from 0 or <b>dlcEach=true:true:3</b> DLC Index start from 0 and have prefix 000
-                                            </td>
-                                        </tr>
+                                    <tr>
+                                        <td>steamdb</td>
+                                        <td>appID, appIDName, dlcsTot, configEXE, configARG</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>option</td>
+                                        <td>username, gamelanguage</td>
+                                        <td><b>option=Sak32009</b> Need default value!</td>
+                                    </tr>
+                                    <tr>
+                                        <td>dlcEach</td>
+                                        <td><b>{dlc_id}</b> = DLC APPID
+                                            <br><b>{dlc_name}</b> = DLC NAME
+                                            <br><b>{dlc_index}</b> = DLC INDEX
+                                        </td>
+                                        <td>With <b>dlcEach=true</b> DLC Index start from 0 or
+                                            <b>dlcEach=true:true:3</b> DLC Index start from 0 and have prefix 000
+                                        </td>
+                                    </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -243,62 +256,47 @@ language = [option=english]gamelanguage[/option]
                 </div>
             </div>
         </div>
-    </main>
-    <!-- MODAL CUSTOM FORMAT -->
-    <div id="GetDLCInfoFromSteamDB_customFormatViewModal" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <h4 class="modal-title">Custom Format</h4>
-                </div>
-                <div class="modal-body">
-                    <textarea class="form-control no-resize" rows="15" readonly></textarea>
-                </div>
-            </div>
-        </div>
     </div>
-    <!-- OVERLAY -->
-    <div class="overlay bg-inverse hidden">
-        <div class="overlay-loading">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-        <table>
-            <tbody>
-                <tr>
-                    <td class="overlay-text">Overlay Text</td>
-                </tr>
-            </tbody>
-        </table>
+</main>
+<!-- OVERLAY -->
+<div class="overlay pos-f-t bg-inverse hidden-xs-up">
+    <div class="overlay-loading">
+        <div></div>
+        <div></div>
+        <div></div>
     </div>
-    <!-- GOOGLE ANALYTICS -->
-    <script src="../gagol.js"></script>
-    <!-- JQUERY -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <!-- TETHER -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js"></script>
-    <!-- BOOTSTRAP -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.4/js/bootstrap.min.js"></script>
-    <!-- GETDLCINFOFROMSTEAMDB -->
-    <script src="jsmin/GetDLCInfofromSteamDB.js"></script>
-    <!-- GETDLCINFOFROMSTEAMDB DATA -->
-    <script src="jsmin/GetDLCInfofromSteamDB/lumaemu.js"></script>
-    <script src="jsmin/GetDLCInfofromSteamDB/lumaemu_o.js"></script>
-    <script src="jsmin/GetDLCInfofromSteamDB/creamAPI.js"></script>
-    <script src="jsmin/GetDLCInfofromSteamDB/creamAPI_o.js"></script>
-    <script src="jsmin/GetDLCInfofromSteamDB/smartsteamemu_o.js"></script>
-    <script src="jsmin/GetDLCInfofromSteamDB/reloaded.js"></script>
-    <script src="jsmin/GetDLCInfofromSteamDB/skidrow.js"></script>
-    <script src="jsmin/GetDLCInfofromSteamDB/3dmgame.js"></script>
-    <script src="jsmin/GetDLCInfofromSteamDB/codex.js"></script>
-    <script src="jsmin/GetDLCInfofromSteamDB/codex_t.js"></script>
-    <script src="jsmin/GetDLCInfofromSteamDB/ali213.js"></script>
-    <script src="jsmin/GetDLCInfofromSteamDB/revolt.js"></script>
-    <!-- GETDLCINFOFROMSTEAMDB RUN -->
-    <script>GetDLCInfofromSteamDB.run();</script>
+    <table>
+        <tbody>
+        <tr>
+            <td class="overlay-text"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<!-- GOOGLE ANALYTICS -->
+<script src="../gagol.js"></script>
+<!-- JQUERY -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<!-- TETHER -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js"></script>
+<!-- BOOTSTRAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.4/js/bootstrap.min.js"></script>
+<!-- GETDLCINFOFROMSTEAMDB -->
+<script src="jsmin/GetDLCInfofromSteamDB.js"></script>
+<!-- GETDLCINFOFROMSTEAMDB DATA -->
+<script src="jsmin/GetDLCInfofromSteamDB/lumaemu.js"></script>
+<script src="jsmin/GetDLCInfofromSteamDB/lumaemu_o.js"></script>
+<script src="jsmin/GetDLCInfofromSteamDB/creamAPI.js"></script>
+<script src="jsmin/GetDLCInfofromSteamDB/creamAPI_o.js"></script>
+<script src="jsmin/GetDLCInfofromSteamDB/smartsteamemu_o.js"></script>
+<script src="jsmin/GetDLCInfofromSteamDB/reloaded.js"></script>
+<script src="jsmin/GetDLCInfofromSteamDB/skidrow.js"></script>
+<script src="jsmin/GetDLCInfofromSteamDB/3dmgame.js"></script>
+<script src="jsmin/GetDLCInfofromSteamDB/codex.js"></script>
+<script src="jsmin/GetDLCInfofromSteamDB/codex_t.js"></script>
+<script src="jsmin/GetDLCInfofromSteamDB/ali213.js"></script>
+<script src="jsmin/GetDLCInfofromSteamDB/revolt.js"></script>
+<!-- GETDLCINFOFROMSTEAMDB RUN -->
+<script>GetDLCInfofromSteamDB.run();</script>
 </body>
 </html>
