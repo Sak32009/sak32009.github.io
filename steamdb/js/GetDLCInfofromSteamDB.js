@@ -47,6 +47,10 @@ var GetDLCInfofromSteamDB = {
         save_selection_getDLCList: {
             title: "When is checked (Save the last selection of the format) and you open the page, automatically submit Get DLC List",
             type: "checkbox"
+        },
+        ignore_steamdb_unknown_app: {
+            title: "Ignore 'SteamDB Unknown App'",
+            type: "checkbox"
         }
     },
 
@@ -509,13 +513,19 @@ var GetDLCInfofromSteamDB = {
 
         $.each(GetDLCInfofromSteamDB.steamDB.dlcs, function (id, name) {
 
-            index++;
+            // ..... IGNORE 'SteamDB Unknown App'
+            if (!(Storage.get("ignore_steamdb_unknown_app") == "true" && name.indexOf("SteamDB Unknown App") !== -1)) {
 
-            result += GetDLCInfofromSteamDB.dlcEachFormat(string, {
-                "dlc_id": id,
-                "dlc_name": name,
-                "dlc_index": GetDLCInfofromSteamDB.dlcIndexFormat(index, format_index, format_index_zeros)
-            });
+                index++;
+
+                result += GetDLCInfofromSteamDB.dlcEachFormat(string, {
+                    "dlc_id": id,
+                    "dlc_name": name,
+                    "dlc_index": GetDLCInfofromSteamDB.dlcIndexFormat(index, format_index, format_index_zeros)
+                });
+
+            }
+            // .....
 
         });
 
