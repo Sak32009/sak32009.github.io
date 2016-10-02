@@ -345,7 +345,7 @@ var GetDLCInfofromSteamDB = {
             });
 
             // RESULT
-            $("#GetDLCInfoFromSteamDB_textarea").text(result);
+            $("#GetDLCInfoFromSteamDB_textarea").html(result);
 
             // ..... AUTO DOWNLOAD
             if (Storage.get("auto_download") == "true") {
