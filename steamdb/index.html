@@ -95,25 +95,25 @@
                  class="img-fluid m-x-auto p-y-2">
             <!-- NAV TABS -->
             <nav id="nav_tabs" class="navbar navbar-full navbar-dark bg-inverse p-x-0">
-                <ul class="nav navbar-nav text-xs-center">
-                    <li class="nav-item col-xs-12 col-sm-2 m-l-0">
+                <ul class="nav navbar-nav">
+                    <li class="nav-item col-xs-12 col-sm-2 m-l-0 text-xs-center">
                         <a class="nav-link active" data-toggle="tab" href="#get_dlcs_list"><i class="fa fa-list"
                                                                                               aria-hidden="true"></i>
                             Get
                             DLCs
                             List</a>
                     </li>
-                    <li class="nav-item col-xs-12 col-sm-2 m-l-0">
+                    <li class="nav-item col-xs-12 col-sm-2 m-l-0 text-xs-center">
                         <a class="nav-link" data-toggle="tab" href="#options"><i class="fa fa-cogs"
                                                                                  aria-hidden="true"></i>
                             Options</a>
                     </li>
-                    <li class="nav-item col-xs-12 col-sm-2 m-l-0">
+                    <li class="nav-item col-xs-12 col-sm-2 m-l-0 text-xs-center">
                         <a class="nav-link" data-toggle="tab" href="#custom_format"><i class="fa fa-plus"
                                                                                        aria-hidden="true"></i> Custom
                             Format</a>
                     </li>
-                    <li class="nav-item col-xs-12 col-sm-2 m-l-0">
+                    <li class="nav-item col-xs-12 col-sm-2 m-l-0 text-xs-center">
                         <a class="nav-link text-danger" href="javascript:;" id="GetDLCInfoFromSteamDB_resetOptions"><i
                                 class="fa fa-refresh" aria-hidden="true"></i> Reset Options</a>
                     </li>
@@ -157,9 +157,9 @@
             </div>
             <!-- OPTIONS -->
             <div class="tab-pane" id="options">
-                <ul id="GetDLCInfofromSteamDB_nav_tabs" class="nav nav-tabs"></ul>
+                <ul id="GetDLCInfofromSteamDB_optionsNav" class="nav nav-tabs"></ul>
                 <div class="card border-top-0">
-                    <div id="GetDLCInfofromSteamDB_tab_content" class="tab-content"></div>
+                    <div id="GetDLCInfofromSteamDB_optionsContent" class="tab-content"></div>
                 </div>
             </div>
             <!-- CUSTOM FORMAT -->
@@ -219,7 +219,13 @@ appid = [steamdb]appID[/steamdb]
 language = [option=english]gamelanguage[/option]
 
 [dlc]
+; FIRST EXAMPLE WITH DEFAULT ARGUMENTS (false:false:3)
 [dlcEach]; {dlc_name}
+{dlc_index} = {dlc_id}
+[/dlcEach]
+; SECOND EXAMPLE WITH CUSTOM ARGUMENTS
+; START INDEX FROM 0 AND DLC_INDEX HAVE PREFIX "00000"
+[dlcEach=true:true:5]; {dlc_name}
 {dlc_index} = {dlc_id}
 [/dlcEach]</code></pre>
                             </div>
@@ -228,29 +234,44 @@ language = [option=english]gamelanguage[/option]
                                     <thead>
                                     <tr>
                                         <th>Tag</th>
+                                        <th>BBCODE</th>
                                         <th>Value(s)</th>
-                                        <th>Ad. Info</th>
+                                        <th>Additional Info</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <tr>
                                         <td>steamdb</td>
-                                        <td>appID, appIDName, dlcsTot, configEXE, configARG</td>
+                                        <td>[steamdb]<strong>$1</strong>[/steamdb]</td>
+                                        <td><strong>$1</strong>: appID, appIDName, dlcsTot, configEXE, configARG</td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>option</td>
-                                        <td>username, gamelanguage</td>
-                                        <td><b>option=Sak32009</b> Need default value!</td>
+                                        <td>[option=<strong>$2</strong>]<strong>$1</strong>[/option]</td>
+                                        <td>
+                                            <div><strong>$1</strong>: username, gamelanguage</div>
+                                            <div><strong>$2</strong>: Is the default value if <strong>$1</strong>
+                                                doesn't exist
+                                            </div>
+                                        </td>
+                                        <td></td>
                                     </tr>
                                     <tr>
                                         <td>dlcEach</td>
+                                        <td>
+                                            [dlcEach=<strong>$2</strong>:<strong>$3</strong>:<strong>$4</strong>]<strong>$1</strong>[/dlcEach]
+                                        </td>
+                                        <td>
+                                            <div><strong>$2</strong>: If is true, index start from 0</div>
+                                            <div><strong>$3 & $4</strong>: <strong>$3</strong> if is true set prefix and
+                                                with <strong>$4</strong> set the
+                                                "zeros" before count
+                                            </div>
+                                        </td>
                                         <td><b>{dlc_id}</b> = DLC APPID
                                             <br><b>{dlc_name}</b> = DLC NAME
                                             <br><b>{dlc_index}</b> = DLC INDEX
-                                        </td>
-                                        <td>With <b>dlcEach=true</b> DLC Index start from 0 or
-                                            <b>dlcEach=true:true:3</b> DLC Index start from 0 and have prefix 000
                                         </td>
                                     </tr>
                                     </tbody>
