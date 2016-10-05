@@ -3,5 +3,5 @@ GetDLCInfofromSteamDB.format.skidrow = {
     name: "SKIDROW",
     ini: "SKIDROW.ini",
     options: {},
-    data: "[dlcEach]; {dlc_name}\n{dlc_id}\n[/dlcEach]"
+    data: "[dlcEach]; {dlc_name}\r\n{dlc_id}\r\n[/dlcEach]"
 };

@@ -119,50 +119,50 @@ GetDLCInfofromSteamDB.format.lumaemu = {
             placeholder: "steamclient64.dll"
         }
     },
-    data: "[SteamStatus]\n" +
-    "Offline = [option=0]lumaemu_offline[/option]\n\n" +
-    "[Player]\n" +
-    "PlayerName = [option=LumaEmu]username[/option]\n" +
-    "PlayerNickname = [option=LumaEmu]username[/option]\n" +
-    "ClanName = [option=LumaEmu]username[/option]\n" +
-    "ClanTag = [option=LumaEmu]username[/option]\n" +
-    "OpenNameChanger = [option=0]lumaemu_opennamechanger[/option]\n\n" +
-    "[Minidumps]\n" +
-    "WriteMinidumps = 1\n\n" +
-    "[Language]\n" +
-    "GameLanguage = [option=english]game_language[/option]\n\n" +
-    "[Cache]\n" +
-    "UseCacheFiles = 0\n" +
-    "CachePath = C:\\Program Files (x86)\\Steam\\steamapps\\\n\n" +
-    "[Log]\n" +
-    "LogFile = [option=1]lumaemu_logfile[/option]\n\n" +
-    "[MasterServer]\n" +
-    "Master = 1\n\n" +
-    "[DLC]\n" +
-    "UnlockDLC = 3\n\n" +
-    "[dlcEach]; {dlc_name}\nDLC_{dlc_id} = 1\n[/dlcEach]\n" +
-    "[Overlay]\n" +
-    "EnableOverlay = [option=1]lumaemu_enableoverlay[/option]\n\n" +
-    "[StatsAndAchievements]\n" +
-    "Save = [option=1]lumaemu_save[/option]\n\n" +
-    "[SourceEngine]\n" +
-    "FocusPatch = 0\n\n" +
-    "[ServerAuthorization]\n" +
-    "BlockLumaEmu = [option=0]lumaemu_blocklumaemu[/option]\n" +
-    "BlockLegitSteam = [option=0]lumaemu_blocklegitsteam[/option]\n" +
-    "BlockSmartSteamEmu = [option=0]lumaemu_blocksmartsteamemu[/option]\n" +
-    "BlockVACBannedAccounts = [option=1]lumaemu_blockVACbannedaccounts[/option]\n" +
-    "BlockUnknownClient = [option=1]lumaemu_blockunknownclient[/option]\n\n" +
-    "[VR]\n" +
-    "EnableVR = 0\n\n" +
-    "[RemoteStorage]\n" +
-    "SaveInCustomPath = [option=0]lumaemu_saveincustompath[/option]\n" +
-    "Path = [option=]lumaemu_path[/option]\n\n" +
-    "[LumaGameLauncher]\n" +
-    "GameExe = [steamdb]configEXE[/steamdb] -appid [steamdb]appID[/steamdb] [steamdb]configARG[/steamdb]\n" +
-    "LoadLumaCEG = 0\n" +
-    "AppIDSetByLauncher = 1\n\n" +
-    "[SteamClient]\n" +
-    "LumaEmuClientDll = [option=steamclient.dll]lumaemu_lumaemuclientDll[/option]\n" +
-    "LumaEmuClientDll64 = [option=steamclient64.dll]lumaemu_lumaemuclientDll64[/option]\n"
+    data: "[SteamStatus]\r\n" +
+    "Offline = [option=0]lumaemu_offline[/option]\r\n\r\n" +
+    "[Player]\r\n" +
+    "PlayerName = [option=LumaEmu]username[/option]\r\n" +
+    "PlayerNickname = [option=LumaEmu]username[/option]\r\n" +
+    "ClanName = [option=LumaEmu]username[/option]\r\n" +
+    "ClanTag = [option=LumaEmu]username[/option]\r\n" +
+    "OpenNameChanger = [option=0]lumaemu_opennamechanger[/option]\r\n\r\n" +
+    "[Minidumps]\r\n" +
+    "WriteMinidumps = 1\r\n\r\n" +
+    "[Language]\r\n" +
+    "GameLanguage = [option=english]game_language[/option]\r\n\r\n" +
+    "[Cache]\r\n" +
+    "UseCacheFiles = 0\r\n" +
+    "CachePath = C:\\Program Files (x86)\\Steam\\steamapps\\\r\n\r\n" +
+    "[Log]\r\n" +
+    "LogFile = [option=1]lumaemu_logfile[/option]\r\n\r\n" +
+    "[MasterServer]\r\n" +
+    "Master = 1\r\n\r\n" +
+    "[DLC]\r\n" +
+    "UnlockDLC = 3\r\n\r\n" +
+    "[dlcEach]; {dlc_name}\r\nDLC_{dlc_id} = 1\r\n[/dlcEach]\r\n" +
+    "[Overlay]\r\n" +
+    "EnableOverlay = [option=1]lumaemu_enableoverlay[/option]\r\n\r\n" +
+    "[StatsAndAchievements]\r\n" +
+    "Save = [option=1]lumaemu_save[/option]\r\n\r\n" +
+    "[SourceEngine]\r\n" +
+    "FocusPatch = 0\r\n\r\n" +
+    "[ServerAuthorization]\r\n" +
+    "BlockLumaEmu = [option=0]lumaemu_blocklumaemu[/option]\r\n" +
+    "BlockLegitSteam = [option=0]lumaemu_blocklegitsteam[/option]\r\n" +
+    "BlockSmartSteamEmu = [option=0]lumaemu_blocksmartsteamemu[/option]\r\n" +
+    "BlockVACBannedAccounts = [option=1]lumaemu_blockVACbannedaccounts[/option]\r\n" +
+    "BlockUnknownClient = [option=1]lumaemu_blockunknownclient[/option]\r\n\r\n" +
+    "[VR]\r\n" +
+    "EnableVR = 0\r\n\r\n" +
+    "[RemoteStorage]\r\n" +
+    "SaveInCustomPath = [option=0]lumaemu_saveincustompath[/option]\r\n" +
+    "Path = [option=]lumaemu_path[/option]\r\n\r\n" +
+    "[LumaGameLauncher]\r\n" +
+    "GameExe = [steamdb]configEXE[/steamdb] -appid [steamdb]appID[/steamdb] [steamdb]configARG[/steamdb]\r\n" +
+    "LoadLumaCEG = 0\r\n" +
+    "AppIDSetByLauncher = 1\r\n\r\n" +
+    "[SteamClient]\r\n" +
+    "LumaEmuClientDll = [option=steamclient.dll]lumaemu_lumaemuclientDll[/option]\r\n" +
+    "LumaEmuClientDll64 = [option=steamclient64.dll]lumaemu_lumaemuclientDll64[/option]\r\n"
 };

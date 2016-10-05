@@ -32,6 +32,12 @@
     <link href="css/bootstrap-custom.min.css" rel="stylesheet">
 </head>
 <body>
+<!-- OVERLAY LOADING -->
+<div class="overlay-loading">
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
 <!-- NAV -->
 <nav id="nav" class="navbar navbar-full navbar-dark bg-inverse">
     <div class="container">
@@ -138,8 +144,7 @@
                             </button>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <a class="dropdown-item" href="javascript:;" id="GetDLCInfoFromSteamDB_ini"><i
-                                        class="fa fa-file-text" aria-hidden="true"></i>
-                                    format.ini</a>
+                                        class="fa fa-file-text" aria-hidden="true"></i> <span>#.ini</span></a>
                                 <a class="dropdown-item" href="javascript:;" id="GetDLCInfoFromSteamDB_steam_appid"
                                    download="steam_appid.txt"><i class="fa fa-file-text-o" aria-hidden="true"></i>
                                     steam_appid.txt</a>
@@ -258,21 +263,6 @@ language = [option=english]gamelanguage[/option]
         </div>
     </div>
 </main>
-<!-- OVERLAY -->
-<div class="overlay pos-f-t bg-inverse hidden-xs-up">
-    <div class="overlay-loading">
-        <div></div>
-        <div></div>
-        <div></div>
-    </div>
-    <table>
-        <tbody>
-        <tr>
-            <td class="overlay-text"></td>
-        </tr>
-        </tbody>
-    </table>
-</div>
 <!-- GOOGLE ANALYTICS -->
 <script src="../gagol.js"></script>
 <!-- JQUERY -->

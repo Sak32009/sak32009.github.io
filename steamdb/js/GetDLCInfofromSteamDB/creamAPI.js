@@ -70,28 +70,28 @@ GetDLCInfofromSteamDB.format.creamAPI = {
             type: "checkbox"
         }
     },
-    data: "[steam]\n" +
-    "appid = [steamdb]appID[/steamdb]\n" +
-    "language = [option=english]game_language[/option]\n" +
-    "unlockall = [option=false]creamapi_unlock_all[/option]\n" +
-    "orgapi = [option=steam_api_o.dll]creamapi_orgapi[/option]\n" +
-    "orgapi64 = [option=steam_api64_o.dll]creamapi_orgapi64[/option]\n" +
-    "extraprotection = [option=false]creamapi_extraprotection[/option]\n" +
-    "extraprotectionlevel = [option=0]creamapi_extraprotectionlevel[/option]\n" +
-    "wrappermode = [option=false]creamapi_wrappermode[/option]\n" +
-    "log = [option=false]creamapi_log[/option]\n\n" +
-    "[steam_wrapper]\n" +
-    "newappid = [option=0]creamapi_newappid[/option]\n" +
-    "loademu = [option=false]creamapi_loademu[/option]\n" +
-    "emudll = [option=emu.dll]creamapi_emudll[/option]\n" +
-    "wrapperremotestorage = [option=false]creamapi_wrapperremotestorage[/option]\n" +
-    "wrapperuserstats = [option=false]creamapi_wrapperuserstats[/option]\n" +
-    "wrapperutils = [option=false]creamapi_wrapperutils[/option]\n" +
-    "wrappercallbacks = [option=false]creamapi_wrappercallbacks[/option]\n\n" +
-    "[dlc_subscription]\n" +
-    "[dlcEach]; {dlc_name}\n{dlc_id} = true\n[/dlcEach]\n" +
-    "[dlc_index]\n" +
-    "[dlcEach]{dlc_index} = {dlc_id}\n[/dlcEach]\n" +
-    "[dlc_names]\n" +
-    "[dlcEach]{dlc_index} = \"{dlc_name}\"\n[/dlcEach]"
+    data: "[steam]\r\n" +
+    "appid = [steamdb]appID[/steamdb]\r\n" +
+    "language = [option=english]game_language[/option]\r\n" +
+    "unlockall = [option=false]creamapi_unlock_all[/option]\r\n" +
+    "orgapi = [option=steam_api_o.dll]creamapi_orgapi[/option]\r\n" +
+    "orgapi64 = [option=steam_api64_o.dll]creamapi_orgapi64[/option]\r\n" +
+    "extraprotection = [option=false]creamapi_extraprotection[/option]\r\n" +
+    "extraprotectionlevel = [option=0]creamapi_extraprotectionlevel[/option]\r\n" +
+    "wrappermode = [option=false]creamapi_wrappermode[/option]\r\n" +
+    "log = [option=false]creamapi_log[/option]\r\n\r\n" +
+    "[steam_wrapper]\r\n" +
+    "newappid = [option=0]creamapi_newappid[/option]\r\n" +
+    "loademu = [option=false]creamapi_loademu[/option]\r\n" +
+    "emudll = [option=emu.dll]creamapi_emudll[/option]\r\n" +
+    "wrapperremotestorage = [option=false]creamapi_wrapperremotestorage[/option]\r\n" +
+    "wrapperuserstats = [option=false]creamapi_wrapperuserstats[/option]\r\n" +
+    "wrapperutils = [option=false]creamapi_wrapperutils[/option]\r\n" +
+    "wrappercallbacks = [option=false]creamapi_wrappercallbacks[/option]\r\n\r\n" +
+    "[dlc_subscription]\r\n" +
+    "[dlcEach]; {dlc_name}\r\n{dlc_id} = true\r\n[/dlcEach]\r\n" +
+    "[dlc_index]\r\n" +
+    "[dlcEach]{dlc_index} = {dlc_id}\r\n[/dlcEach]\r\n" +
+    "[dlc_names]\r\n" +
+    "[dlcEach]{dlc_index} = \"{dlc_name}\"\r\n[/dlcEach]"
 };

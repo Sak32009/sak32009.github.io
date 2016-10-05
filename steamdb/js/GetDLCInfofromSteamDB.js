@@ -44,7 +44,7 @@ var GetDLCInfofromSteamDB = {
             title: "Save the last selection of the format",
             type: "checkbox"
         },
-        save_selection_getDLCList: {
+        auto_submit: {
             title: "When is checked (Save the last selection of the format) and you open the page, automatically submit Get DLC List",
             type: "checkbox"
         },
@@ -65,7 +65,7 @@ var GetDLCInfofromSteamDB = {
             if ($.isNumeric(GetDLCInfofromSteamDB.steamDB.appID)) {
 
                 // SHOW OVERLAY
-                GetDLCInfofromSteamDB.overlay("Loading ...");
+                GetDLCInfofromSteamDB.overlay(1);
 
                 // REQUEST TO STEAMDB
                 $.get(GetDLCInfofromSteamDB.yql, {
@@ -77,7 +77,7 @@ var GetDLCInfofromSteamDB = {
                     // CALL OTHER FUNCTIONS
                     GetDLCInfofromSteamDB.call();
                     // HIDE OVERLAY
-                    GetDLCInfofromSteamDB.overlay();
+                    GetDLCInfofromSteamDB.overlay(0);
                 });
 
             } else {
@@ -342,7 +342,7 @@ var GetDLCInfofromSteamDB = {
             $("#GetDLCInfoFromSteamDB_ini").attr({
                 href: Download.data(result),
                 download: format_ini
-            });
+            }).find("span").text(format_ini);
 
             // RESULT
             $("#GetDLCInfoFromSteamDB_textarea").html(result);
@@ -365,7 +365,7 @@ var GetDLCInfofromSteamDB = {
         });
 
         // ..... SAVE SELECTION GET DLC LIST
-        if (Storage.get("save_selection") == "true" && Storage.get("save_selection_getDLCList") == "true") {
+        if (Storage.get("save_selection") == "true" && Storage.get("auto_submit") == "true") {
             submt.trigger("submit");
         }
         // .....
@@ -639,17 +639,11 @@ var GetDLCInfofromSteamDB = {
     },
 
     // OVERLAY
-    overlay: function (txt) {
+    overlay: function (bool) {
 
-        if (typeof txt !== "undefined") {
+        var dom = $(".overlay-loading");
 
-            $(".overlay").removeClass("hidden-xs-up").find(".overlay-text").text(txt);
-
-        } else {
-
-            $(".overlay").addClass("hidden-xs-up");
-
-        }
+        return bool ? dom.show() : dom.hide();
 
     },
 
