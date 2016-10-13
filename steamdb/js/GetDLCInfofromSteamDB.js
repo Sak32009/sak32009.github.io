@@ -315,13 +315,13 @@ var GetDLCInfofromSteamDB = {
 
         });
 
-        // CLEAN CACHE
-        $("#GetDLCInfoFromSteamDB_cleanCache").click(function (e) {
+        // CLEAR CACHE
+        $("#GetDLCInfoFromSteamDB_clearCache").click(function (e) {
 
             e.preventDefault();
 
             // CONFIRM
-            if (window.confirm("Do you really want to clean cache?")) {
+            if (window.confirm("Do you really want to clear cache?")) {
                 // CLEAR STORAGE
                 Storage.remove("cacheAppID");
                 // ALERT
