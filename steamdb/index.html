@@ -43,8 +43,8 @@
     <div class="container">
         <div class="navbar-brand"><i class="fa fa-database" aria-hidden="true"></i></div>
         <div class="clearfix hidden-lg-up">
-            <ul class="nav navbar-nav pull-xs-right">
-                <li class="nav-item">
+            <ul class="nav navbar-nav">
+                <li class="nav-item pull-xs-right">
                     <a class="nav-link" href="javascript:;" data-toggle="collapse"
                        data-target="#nav .navbar-toggleable-md"><i class="fa fa-bars" aria-hidden="true"></i></a>
                 </li>
@@ -68,9 +68,7 @@
                     <a class="nav-link" href="../" target="_blank"><i class="fa fa-beer" aria-hidden="true"></i>
                         Sak32009</a>
                 </li>
-            </ul>
-            <ul class="nav navbar-nav pull-lg-right">
-                <li class="nav-item">
+                <li class="nav-item pull-lg-right">
                     <form class="form-inline" method="get">
                         <div class="input-group">
                             <input type="search" autocomplete="on" class="form-control" name="appid"
@@ -113,9 +111,18 @@
                                                                                        aria-hidden="true"></i> Custom
                             Format</a>
                     </li>
-                    <li class="nav-item col-xs-12 col-sm-2 m-l-0 text-xs-center">
-                        <a class="nav-link text-danger" href="javascript:;" id="GetDLCInfoFromSteamDB_resetOptions"><i
-                                class="fa fa-refresh" aria-hidden="true"></i> Reset Options</a>
+                    <li class="nav-item col-xs-12 col-sm-2 m-l-0 text-xs-center dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" type="button" data-toggle="dropdown">
+                            <i class="fa fa-archive" aria-hidden="true"></i> Storage
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item text-danger" href="javascript:;"
+                               id="GetDLCInfoFromSteamDB_resetOptions"><i
+                                    class="fa fa-refresh" aria-hidden="true"></i> Reset Options</a>
+                            <a class="dropdown-item text-danger" href="javascript:;"
+                               id="GetDLCInfoFromSteamDB_cleanCache"><i
+                                    class="fa fa-refresh" aria-hidden="true"></i> Clean Cache</a>
+                        </div>
                     </li>
                     <li class="nav-item col-xs-12 col-sm-4 m-l-0">
                         <form id="GetDLCInfoFromSteamDB_submit">
@@ -136,6 +143,9 @@
         <div class="tab-content">
             <!-- GET DLCS LIST -->
             <div class="tab-pane active" id="get_dlcs_list">
+                <p><i class="fa fa-cloud" aria-hidden="true"></i> From cache: <span class="text-warning"
+                                                                                    id="GetDLCInfoFromSteamDB_cacheStatus">No</span>
+                </p>
                 <div class="p-relative">
                     <div class="p-absolute-textarea">
                         <div class="dropdown">
