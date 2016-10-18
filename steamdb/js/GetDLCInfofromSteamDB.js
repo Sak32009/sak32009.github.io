@@ -14,7 +14,11 @@ var GetDLCInfofromSteamDB = {
         // SUPPORT URL
         support: "http://cs.rin.ru/forum/viewtopic.php?f=10&t=71837",
         // YQL URL
-        yql: "https://query.yahooapis.com/v1/public/yql"
+        yql: "https://query.yahooapis.com/v1/public/yql",
+        // TIMESTAMP
+        timestamp: Math.round(new Date().getTime() / 1000),
+        // DATETIME
+        datetime: new Date().toGMTString()
     },
 
     // STEAMDB

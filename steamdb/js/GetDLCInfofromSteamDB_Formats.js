@@ -1,6 +1,6 @@
 // CREAMAPI (FULL INI)
 GetDLCInfofromSteamDB.format.creamAPI = {
-    name: "CREAMAPI v2.0.0.6 HOTFIX (FULL INI)",
+    name: "CREAMAPI v2.0.0.7 (FULL INI)",
     ini: "cream_api.ini",
     options: {
         creamapi_unlock_all: {
@@ -72,13 +72,15 @@ GetDLCInfofromSteamDB.format.creamAPI = {
     },
     data: "[steam]\r\n" +
     "appid = [steamdb]appID[/steamdb]\r\n" +
-    "language = [option=english]gameLanguage[/option]\r\n" +
+    "; force the usage of specific language\r\n" +
+    ";language = [option=english]gameLanguage[/option]\r\n" +
     "unlockall = [option=false]creamapi_unlock_all[/option]\r\n" +
     "orgapi = [option=steam_api_o.dll]creamapi_orgapi[/option]\r\n" +
     "orgapi64 = [option=steam_api64_o.dll]creamapi_orgapi64[/option]\r\n" +
     "extraprotection = [option=false]creamapi_extraprotection[/option]\r\n" +
     "extraprotectionlevel = [option=0]creamapi_extraprotectionlevel[/option]\r\n" +
     "wrappermode = [option=false]creamapi_wrappermode[/option]\r\n" +
+    "; isn't considered by the nonlog_build\r\n" +
     "log = [option=false]creamapi_log[/option]\r\n\r\n" +
     "[steam_wrapper]\r\n" +
     "newappid = [option=0]creamapi_newappid[/option]\r\n" +
@@ -93,20 +95,26 @@ GetDLCInfofromSteamDB.format.creamAPI = {
     "[dlc_index]\r\n" +
     "[dlcEach]{dlc_index} = {dlc_id}\r\n[/dlcEach]\r\n" +
     "[dlc_names]\r\n" +
-    "[dlcEach]{dlc_index} = \"{dlc_name}\"\r\n[/dlcEach]"
+    "[dlcEach]{dlc_index} = \"{dlc_name}\"\r\n[/dlcEach]\r\n" +
+    "[dlc_timestamp]\r\n" +
+    "; " + GetDLCInfofromSteamDB.info.datetime + "\r\n" +
+    "[dlcEach]{dlc_id} = " + GetDLCInfofromSteamDB.info.timestamp + "\r\n[/dlcEach]"
 };
 
 // CREAMAPI (ONLY DLC LIST)
 GetDLCInfofromSteamDB.format.creamAPI_o = {
-    name: "CREAMAPI v2.0.0.6 HOTFIX (ONLY DLC LIST)",
-    ini: "CREAMAPI_O.ini",
+    name: "CREAMAPI v2.0.0.7 (ONLY DLC LIST)",
+    ini: "cream_api_dlcs.ini",
     options: {},
     data: "[dlc_subscription]\r\n" +
     "[dlcEach]; {dlc_name}\r\n{dlc_id} = true\r\n[/dlcEach]\r\n" +
     "[dlc_index]\r\n" +
     "[dlcEach]{dlc_index} = {dlc_id}\r\n[/dlcEach]\r\n" +
     "[dlc_names]\r\n" +
-    "[dlcEach]{dlc_index} = \"{dlc_name}\"\r\n[/dlcEach]"
+    "[dlcEach]{dlc_index} = \"{dlc_name}\"\r\n[/dlcEach]\r\n" +
+    "[dlc_timestamp]\r\n" +
+    "; " + GetDLCInfofromSteamDB.info.datetime + "\r\n" +
+    "[dlcEach]{dlc_id} = " + GetDLCInfofromSteamDB.info.timestamp + "\r\n[/dlcEach]"
 };
 
 // LUMAEMU (FULL INI)
@@ -281,7 +289,7 @@ GetDLCInfofromSteamDB.format.lumaemu = {
 // LUMAEMU (ONLY DLC LIST)
 GetDLCInfofromSteamDB.format.lumaemu_o = {
     name: "LUMAEMU v1.9.7 (ONLY DLC LIST)",
-    ini: "LUMAEMU_O.ini",
+    ini: "LumaEmu_dlcs.ini",
     options: {},
     data: "[dlcEach]; {dlc_name}\r\nDLC_{dlc_id} = 1\r\n[/dlcEach]"
 };
@@ -289,7 +297,7 @@ GetDLCInfofromSteamDB.format.lumaemu_o = {
 // SMARTSTEAMEMU (ONLY DLC LIST)
 GetDLCInfofromSteamDB.format.smartsteamemu_o = {
     name: "SMARTSTEAMEMU (ONLY DLC LIST)",
-    ini: "SMARTSTEAMEMU_O.ini",
+    ini: "SmartSteamEmu_dlcs.ini",
     options: {},
     data: "[dlcEach]{dlc_id} = \"{dlc_name}\"\r\n[/dlcEach]"
 };
