@@ -177,9 +177,8 @@ var GetDLCInfofromSteamDB = {
 
             var $this = $(this);
             var appID = $this.data("appid");
-            var appIDName = $this.find("td:nth-of-type(2)").text().trim();
 
-            GetDLCInfofromSteamDB.steamDB.dlcs[appID] = appIDName;
+            GetDLCInfofromSteamDB.steamDB.dlcs[appID] = $this.find("td:nth-of-type(2)").text().trim();
             GetDLCInfofromSteamDB.steamDB.dlcsTot++;
 
         });
@@ -573,7 +572,8 @@ var GetDLCInfofromSteamDB = {
                 result += GetDLCInfofromSteamDB.dlcEachFormat(string, {
                     "dlc_id": id,
                     "dlc_name": name,
-                    "dlc_index": GetDLCInfofromSteamDB.dlcIndexFormat(index, format_index, format_index_zeros)
+                    "dlc_index": GetDLCInfofromSteamDB.dlcIndexFormat(index, format_index, format_index_zeros),
+                    "dlc_timestamp": GetDLCInfofromSteamDB.info.timestamp
                 });
 
             }
@@ -619,13 +619,13 @@ var GetDLCInfofromSteamDB = {
     // DLC FORMATS STR
     dlcFormatsStr: function (str) {
 
-        var re_match = str.match(/\[(\w+)(?:\=(.*))?\]([^\[]+)\[\/(\w+)\]/g);
+        var re_match = str.match(/\[(\w+)(?:=(.*))?]([^[]+)\[\/(\w+)]/g);
 
         if (re_match !== null && re_match.length) {
 
             $.each(re_match, function (i, val) {
 
-                var re_exec = /\[(\w+)(?:\=(.*))?\]([^\[]+)\[\/(\w+)\]/g.exec(val);
+                var re_exec = /\[(\w+)(?:=(.*))?]([^[]+)\[\/(\w+)]/g.exec(val);
 
                 if (re_exec !== null && re_exec.length) {
 
@@ -651,6 +651,11 @@ var GetDLCInfofromSteamDB = {
                                 break;
                             case "dlcEach":
                                 str = str.replace(val, GetDLCInfofromSteamDB.dlcEach(bbcode_val, bbcode_opts[0] == "true", bbcode_opts[1] == "true", bbcode_opts[2] || 0));
+                                break;
+                            case "env":
+                                if (bbcode_val == "datetime") {
+                                    str = str.replace(val, GetDLCInfofromSteamDB.info.datetime);
+                                }
                                 break;
                         }
 

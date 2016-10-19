@@ -72,16 +72,16 @@ GetDLCInfofromSteamDB.format.creamAPI = {
     },
     data: "[steam]\r\n" +
     "appid = [steamdb]appID[/steamdb]\r\n" +
-    "; force the usage of specific language\r\n" +
-    ";language = [option=english]gameLanguage[/option]\r\n" +
     "unlockall = [option=false]creamapi_unlock_all[/option]\r\n" +
     "orgapi = [option=steam_api_o.dll]creamapi_orgapi[/option]\r\n" +
     "orgapi64 = [option=steam_api64_o.dll]creamapi_orgapi64[/option]\r\n" +
     "extraprotection = [option=false]creamapi_extraprotection[/option]\r\n" +
     "extraprotectionlevel = [option=0]creamapi_extraprotectionlevel[/option]\r\n" +
     "wrappermode = [option=false]creamapi_wrappermode[/option]\r\n" +
-    "; isn't considered by the nonlog_build\r\n" +
-    "log = [option=false]creamapi_log[/option]\r\n\r\n" +
+    "; Force the usage of specific language.\r\n" +
+    ";language = [option=english]gameLanguage[/option]\r\n" +
+    "; If you use log_build, uncomment line.\r\n" +
+    ";log = [option=false]creamapi_log[/option]\r\n\r\n" +
     "[steam_wrapper]\r\n" +
     "newappid = [option=0]creamapi_newappid[/option]\r\n" +
     "loademu = [option=false]creamapi_loademu[/option]\r\n" +
@@ -91,14 +91,15 @@ GetDLCInfofromSteamDB.format.creamAPI = {
     "wrapperutils = [option=false]creamapi_wrapperutils[/option]\r\n" +
     "wrappercallbacks = [option=false]creamapi_wrappercallbacks[/option]\r\n\r\n" +
     "[dlc_subscription]\r\n" +
-    "[dlcEach]; {dlc_name}\r\n{dlc_id} = true\r\n[/dlcEach]\r\n" +
+    "[dlcEach]{dlc_id} = true\r\n[/dlcEach]\r\n" +
     "[dlc_index]\r\n" +
     "[dlcEach]{dlc_index} = {dlc_id}\r\n[/dlcEach]\r\n" +
     "[dlc_names]\r\n" +
-    "[dlcEach]{dlc_index} = \"{dlc_name}\"\r\n[/dlcEach]\r\n" +
+    "[dlcEach]{dlc_index} = {dlc_name}\r\n[/dlcEach]\r\n" +
     "[dlc_timestamp]\r\n" +
-    "; " + GetDLCInfofromSteamDB.info.datetime + "\r\n" +
-    "[dlcEach]{dlc_id} = " + GetDLCInfofromSteamDB.info.timestamp + "\r\n[/dlcEach]"
+    "; The installation date is setted to:\r\n" +
+    "; [env]datetime[/env]\r\n" +
+    "[dlcEach]{dlc_id} = {dlc_timestamp}\r\n[/dlcEach]"
 };
 
 // CREAMAPI (ONLY DLC LIST)
@@ -107,14 +108,15 @@ GetDLCInfofromSteamDB.format.creamAPI_o = {
     ini: "cream_api_dlcs.ini",
     options: {},
     data: "[dlc_subscription]\r\n" +
-    "[dlcEach]; {dlc_name}\r\n{dlc_id} = true\r\n[/dlcEach]\r\n" +
+    "[dlcEach]{dlc_id} = true\r\n[/dlcEach]\r\n" +
     "[dlc_index]\r\n" +
     "[dlcEach]{dlc_index} = {dlc_id}\r\n[/dlcEach]\r\n" +
     "[dlc_names]\r\n" +
-    "[dlcEach]{dlc_index} = \"{dlc_name}\"\r\n[/dlcEach]\r\n" +
+    "[dlcEach]{dlc_index} = {dlc_name}\r\n[/dlcEach]\r\n" +
     "[dlc_timestamp]\r\n" +
-    "; " + GetDLCInfofromSteamDB.info.datetime + "\r\n" +
-    "[dlcEach]{dlc_id} = " + GetDLCInfofromSteamDB.info.timestamp + "\r\n[/dlcEach]"
+    "; The installation date is setted to:\r\n" +
+    "; [env]datetime[/env]\r\n" +
+    "[dlcEach]{dlc_id} = {dlc_timestamp}\r\n[/dlcEach]"
 };
 
 // LUMAEMU (FULL INI)
@@ -299,7 +301,7 @@ GetDLCInfofromSteamDB.format.smartsteamemu_o = {
     name: "SMARTSTEAMEMU (ONLY DLC LIST)",
     ini: "SmartSteamEmu_dlcs.ini",
     options: {},
-    data: "[dlcEach]{dlc_id} = \"{dlc_name}\"\r\n[/dlcEach]"
+    data: "[dlcEach]{dlc_id} = {dlc_name}\r\n[/dlcEach]"
 };
 
 // 3DMGAME
@@ -315,7 +317,7 @@ GetDLCInfofromSteamDB.format.ali213 = {
     name: "ALI213",
     ini: "ALI213.ini",
     options: {},
-    data: "[dlcEach]{dlc_id} = \"{dlc_name}\"\r\n[/dlcEach]"
+    data: "[dlcEach]{dlc_id} = {dlc_name}\r\n[/dlcEach]"
 };
 
 // CODEX (ID = NAME)
@@ -323,7 +325,7 @@ GetDLCInfofromSteamDB.format.codex = {
     name: "CODEX (ID = NAME)",
     ini: "steam_emu.ini",
     options: {},
-    data: "[dlcEach]{dlc_id} = \"{dlc_name}\"\r\n[/dlcEach]"
+    data: "[dlcEach]{dlc_id} = {dlc_name}\r\n[/dlcEach]"
 };
 
 // CODEX (DLC00000, DLCName)
@@ -331,7 +333,7 @@ GetDLCInfofromSteamDB.format.codex_t = {
     name: "CODEX (DLC00000, DLCName)",
     ini: "steam_emu.ini",
     options: {},
-    data: "[dlcEach=false:true:5]DLC{dlc_index} = {dlc_id}\r\nDLCName{dlc_index} = \"{dlc_name}\"\r\n[/dlcEach]"
+    data: "[dlcEach=false:true:5]DLC{dlc_index} = {dlc_id}\r\nDLCName{dlc_index} = {dlc_name}\r\n[/dlcEach]"
 };
 
 // RELOADED
@@ -339,8 +341,8 @@ GetDLCInfofromSteamDB.format.reloaded = {
     name: "RELOADED",
     ini: "steam_api.ini",
     options: {},
-    data: "AppName = \"[steamdb]appIDName[/steamdb]\"\r\n" +
-    "[dlcEach=true:true:3]DLC{dlc_index} = {dlc_id}\r\nDLCName{dlc_index} = \"{dlc_name}\"\r\n[/dlcEach]" +
+    data: "AppName = [steamdb]appIDName[/steamdb]\r\n" +
+    "[dlcEach=true:true:3]DLC{dlc_index} = {dlc_id}\r\nDLCName{dlc_index} = {dlc_name}\r\n[/dlcEach]" +
     "DLCCount = [steamdb]dlcsTot[/steamdb]\r\n"
 };
 
@@ -356,7 +358,7 @@ GetDLCInfofromSteamDB.format.revolt = {
     "[dlcEach]; {dlc_name}\r\n{dlc_index} = {dlc_id}\r\n[/dlcEach]\r\n" +
     "[Subscriptions]\r\n" +
     "Default = false\r\n\r\n" +
-    "[dlcEach]; {dlc_name}\r\n{dlc_index} = true\r\n[/dlcEach]"
+    "[dlcEach]{dlc_index} = true\r\n[/dlcEach]"
 };
 
 // SKIDROW
