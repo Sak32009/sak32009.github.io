@@ -450,8 +450,8 @@ var GetDLCInfofromSteamDB = {
                 "    <td><textarea class='form-control' readonly>" + GetDLCInfofromSteamDB.dlcFormatsStr(format) + "</textarea></td>" +
                 "    <td>" +
                 "		<div class='btn-group'>" +
-                "			<button type='button' class='btn btn-success' id='GetDLCInfoFromSteamDB_customFormatEdit'><i class='fa fa-hdd-o' aria-hidden='true'></i> Edit</button>" +
-                "			<button type='button' class='btn btn-danger' id='GetDLCInfoFromSteamDB_customFormatRemove'><i class='fa fa-trash' aria-hidden='true'></i> Remove</button>" +
+                "			<button type='button' class='btn btn-outline-success' id='GetDLCInfoFromSteamDB_customFormatEdit'><i class='fa fa-hdd-o' aria-hidden='true'></i> Edit</button>" +
+                "			<button type='button' class='btn btn-outline-danger' id='GetDLCInfoFromSteamDB_customFormatRemove'><i class='fa fa-trash' aria-hidden='true'></i> Remove</button>" +
                 "		</div>" +
                 "	</td>" +
                 "</tr>";
@@ -495,16 +495,16 @@ var GetDLCInfofromSteamDB = {
             $("#GetDLCInfofromSteamDB_optionsContent").append(
                 "<div class='tab-pane' id='" + key + "'>" +
                 "   <form id='GetDLCInfoFromSteamDB_submitOptions'>" +
-                "       <div class='card-block'>" +
-                "           <button type='submit' class='btn btn-block btn-success'>Save Options</button>" +
+                "       <div class='p-1'>" +
+                "           <button type='submit' class='btn btn-block btn-outline-success'>Save Options</button>" +
                 "       </div>" +
                 "       <div class='table-responsive'>" +
-                "           <table class='table table-bordered m-b-0'><tbody>" +
+                "           <table class='table table-bordered mb-0'><tbody>" +
                 GetDLCInfofromSteamDB.convertOptions2HTML(options) +
                 "           </tbody></table>" +
                 "       </div>" +
-                "       <div class='card-block'>" +
-                "           <button type='submit' class='btn btn-block btn-success'>Save Options</button>" +
+                "       <div class='p-1'>" +
+                "           <button type='submit' class='btn btn-block btn-outline-success'>Save Options</button>" +
                 "       </div>" +
                 "   </form>" +
                 "</div>");
@@ -716,7 +716,7 @@ var GetDLCInfofromSteamDB = {
     // ALERT
     alert: function (str) {
 
-        $("#main").html("<div class='alert alert-danger m-a-1'>" + str + "</div>");
+        $("#main").html("<div class='alert alert-danger m-1'>" + str + "</div>");
 
     },
 
