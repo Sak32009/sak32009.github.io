@@ -1,0 +1,66 @@
+.github-corner:hover .octo-arm {
+    -webkit-animation: octocat-wave 560ms ease-in-out;
+    animation: octocat-wave 560ms ease-in-out;
+}
+@-webkit-keyframes octocat-wave {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    20% {
+        -webkit-transform: rotate(-25deg);
+        transform: rotate(-25deg);
+    }
+    40% {
+        -webkit-transform: rotate(10deg);
+        transform: rotate(10deg);
+    }
+    60% {
+        -webkit-transform: rotate(-25deg);
+        transform: rotate(-25deg);
+    }
+    80% {
+        -webkit-transform: rotate(10deg);
+        transform: rotate(10deg);
+    }
+    100% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+}
+@keyframes octocat-wave {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    20% {
+        -webkit-transform: rotate(-25deg);
+        transform: rotate(-25deg);
+    }
+    40% {
+        -webkit-transform: rotate(10deg);
+        transform: rotate(10deg);
+    }
+    60% {
+        -webkit-transform: rotate(-25deg);
+        transform: rotate(-25deg);
+    }
+    80% {
+        -webkit-transform: rotate(10deg);
+        transform: rotate(10deg);
+    }
+    100% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+}
+@media (max-width: 500px) {
+    .github-corner:hover .octo-arm {
+        -webkit-animation: none;
+        animation: none;
+    }
+    .github-corner .octo-arm {
+        -webkit-animation: octocat-wave 560ms ease-in-out;
+        animation: octocat-wave 560ms ease-in-out;
+    }
+}
