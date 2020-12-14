@@ -44,7 +44,7 @@ Support: ${self.userscript.script.supportURL}`;
             }
             result += self.bbcode(data.file.text, withDLCSUnknowns);
             const file = self.toBlob(self.bbcode(data.file.name, false), result, data.file.ext);
-            $(`textarea#textarea`).text(result).scrollTop(0);
+            $(`textarea#textarea`).html(result).scrollTop(0);
             $(`a#download`).attr({
                 href: file.blob,
                 download: file.name
