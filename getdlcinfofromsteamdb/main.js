@@ -113,8 +113,17 @@ Support: ${self.userscript.script.supportURL}`;
 const intervalCheck = window.setInterval(() => {
     const userscript = window.getdlcinfofromsteamdb;
     if (typeof userscript != "undefined") {
-        const run = new m().run();
-        $(".pageloader").removeClass("is-active");
-        window.clearInterval(intervalCheck);
+        const url = new URL(window.location.href);
+        const $_GET = new URLSearchParams(url.search);
+        const appID = $_GET.get("appid").toString();
+        if($_GET.has("appid") && appID.length && !isNaN(appID)){
+            const run = new m().run();
+            $(".pageloader").removeClass("is-active");
+            window.clearInterval(intervalCheck);
+        }else{
+            $("#pageloader_error").text("Invalid appID!");
+        }
+    }else{
+        $("#pageloader_error").text("If it takes too long, verify if the userscript is installed.");
     }
 }, 500);
