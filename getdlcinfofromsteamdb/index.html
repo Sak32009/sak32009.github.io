@@ -212,7 +212,7 @@ Support: ${self.userscript.script.supportURL}`;
                         break;
                     }
                     case "dlcs": {
-                        str = str.replace(bbcode, self.bbcodeDLCS(bbcodeVal.replaceAll("\\n", "\n"), bbcodeOpts[0] == "true", bbcodeOpts[1] || 0, withDLCSUnknowns));
+                        str = str.replace(bbcode, self.bbcodeDLCS(bbcodeVal.replace(/\\n/g, "\n"), bbcodeOpts[0] == "true", bbcodeOpts[1] || 0, withDLCSUnknowns));
                         break;
                     }
                 }
