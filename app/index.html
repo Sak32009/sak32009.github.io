@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Get Data from Steam / SteamDB / EPICDB - Sak32009</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta2/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" />
+        <style>
+            .bg-custom-dark {
+                background-color: #0a0a0a !important;
+            }
+            .bg-custom-dark1 {
+                background-color: #171717 !important;
+            }
+            .btn-dark {
+                background-color: #171717;
+                border-color: #313131 !important;
+            }
+            .form-select,
+            .form-select:focus,
+            textarea.form-control,
+            textarea.form-control:focus {
+                border-color: #313131;
+            }
+            .table-dark {
+                --bs-table-bg: #0a0a0a;
+            }
+            .oswald {
+                font-family: "Oswald", sans-serif;
+            }
+            .nav-tabs {
+                border-bottom: 1px solid #171717;
+            }
+            .nav-tabs .nav-link.active {
+                background-color: #171717;
+                border-color: #313131;
+                border-bottom: 0;
+            }
+        </style>
+    </head>
+    <body class="bg-custom-dark1">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-custom-dark fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-brand oswald">
+                    <img src="https://rawcdn.githack.com/Sak32009/sak32009.github.io/5760c3bc107c72654bdd2575f1f071c895c20e96/sak32009.svg" alt="Logo" style="width: 30px; height: 24px;" class="d-inline-block align-middle" />
+                    <span>
+                        GET DATA FROM <span class="text-danger">STEAM / STEAMDB / EPICDB</span> <small>v<span data-userscript="version">?</span> By Sak32009 | <span data-userscript="year">?</span></small>
+                    </span>
+                </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#b_navbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="b_navbar">
+                    <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                        <li class="nav-item">
+                            <a class="mx-lg-1 mb-2 mb-lg-0 btn btn-danger d-block d-lg-inline-block" target="_blank" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=U7TLCVMHN9HA2&source=url">
+                                <i class="fab fa-paypal"></i>
+                                <span>PayPal</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="mx-lg-1 mb-2 mb-lg-0 btn btn-dark d-block d-lg-inline-block" target="_blank" href="https://github.com/Sak32009/GetDLCInfoFromSteamDB/">
+                                <i class="fab fa-github"></i>
+                                <span>GitHub</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container" style="padding-top: 56px; position: relative;">
+            <div class="row mt-2 text-center">
+                <div class="col-sm-4">
+                    <div id="steamOfficialSelected" class="m-3">
+                        <h4 class="text-danger pb-2">
+                            Steam Official appID<span class="d-none">&nbsp;<i class="fas fa-arrow-circle-down"></i></span>
+                        </h4>
+                        <form action="" method="get">
+                            <input type="hidden" name="from" value="steam" />
+                            <input type="text" class="form-control" name="appid" placeholder="Example: 550" />
+                        </form>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div id="steamDBSelected" class="m-3">
+                        <h4 class="text-danger pb-2">
+                            SteamDB appID<span class="d-none">&nbsp;<i class="fas fa-arrow-circle-down"></i></span>
+                        </h4>
+                        <form action="" method="get">
+                            <input type="hidden" name="from" value="steamdb" />
+                            <input type="text" class="form-control" name="appid" placeholder="Example: 550" />
+                        </form>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div id="epicDBSelected" class="m-3">
+                        <h4 class="text-danger pb-2">
+                            EpicDB appID<span class="d-none">&nbsp;<i class="fas fa-arrow-circle-down"></i></span>
+                        </h4>
+                        <form action="" method="get">
+                            <input type="hidden" name="from" value="epicdb" />
+                            <span tabindex="0" data-bs-toggle="tooltip" title="It's disabled for now! Sorry!">
+                                <input type="text" class="form-control" name="appid" placeholder="Example: ?" disabled />
+                            </span>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div id="alert" class="alert alert-danger text-center mt-2">
+                <div class="spinner-border mb-2" style="width: 3rem; height: 3rem;"></div>
+                <h4>If it takes too long, verify if the <a target="_blank" href="https://github.com/Sak32009/GetDLCInfoFromSteamDB">userscript</a> is installed.</h4>
+            </div>
+            <div id="container" style="display: none;">
+                <div class="row mt-2">
+                    <div class="col-sm-8">
+                        <div class="card text-white bg-custom-dark">
+                            <table class="table table-dark table-bordered table-hover mb-0">
+                                <thead>
+                                    <tr>
+                                        <td colspan="2" class="text-center">
+                                            <i class="fas fa-info-circle"></i>
+                                            <span>Info</span>
+                                        </td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <i class="fas fa-fingerprint"></i>
+                                            <span>App ID:</span>
+                                        </td>
+                                        <td data-app="appid">?</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <i class="fas fa-signature"></i>
+                                            <span>App Name:</span>
+                                        </td>
+                                        <td data-app="name">?</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <i class="fas fa-signature"></i>
+                                            <span>Total DLCs without Unknowns:</span>
+                                        </td>
+                                        <td data-app="count">?</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <i class="fas fa-signature"></i>
+                                            <span>Total DLCs Unknowns:</span>
+                                        </td>
+                                        <td data-app="countUnknowns">?</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <img src="https://via.placeholder.com/460x215?text=App%20Header" data-app="header" class="img-fluid rounded" alt="Header" />
+                    </div>
+                </div>
+                <div class="card mt-2 text-white bg-custom-dark">
+                    <div class="card-header" data-bs-toggle="tooltip" title="It's disabled for now! Sorry!">
+                        <ul class="nav nav-tabs card-header-tabs justify-content-center" style="pointer-events: none;">
+                            <li class="nav-item">
+                                <a class="nav-link text-white active" href="#">
+                                    <i class="fas fa-sync-alt"></i>
+                                    <span>Converter</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="#">
+                                    <i class="fas fa-file-import"></i>
+                                    <span>Drag'n'Drop (Autocomplete)</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="#">
+                                    <i class="fab fa-steam"></i>
+                                    <span>Interfaces</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="#">
+                                    <i class="fab fa-steam"></i>
+                                    <span>Depots</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="#">
+                                    <i class="fab fa-steam"></i>
+                                    <span>Items</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="#">
+                                    <i class="fab fa-steam"></i>
+                                    <span>Achievements</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="#">
+                                    <i class="fas fa-cogs"></i>
+                                    <span>Configurator</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <div class="input-group">
+                            <select id="select" class="form-select text-white bg-custom-dark1"></select>
+                            <button id="convert" class="btn btn-dark" type="button">
+                                <i class="fas fa-sync-alt"></i>
+                                <span>Convert</span>
+                            </button>
+                            <label class="btn btn-dark" for="unknowns"><input class="form-check-input" type="checkbox" id="unknowns" /> With DLCS Unknowns</label>
+                            <a id="download" href="javascript:;" class="btn btn-dark">
+                                <i class="fas fa-file-download"></i>
+                                <span>Download as file</span>
+                            </a>
+                        </div>
+                        <textarea id="textarea" class="form-control text-white bg-custom-dark1 mt-2" rows="20" placeholder="Select an option and click 'Convert'" style="resize: none;"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bg-custom-dark text-white text-center p-4 mt-2">
+            <h5>
+                <strong>Protect</strong> development and free things,<br />
+                because their survival is in our hands.
+            </h5>
+            <h6 class="mt-2">Source code licensed <a href="https://opensource.org/licenses/mit-license.php" target="_blank">MIT</a>.</h6>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/js/all.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta2/js/bootstrap.bundle.min.js"></script>
+        <script>
+            [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]')).map(function (t) {
+                return new bootstrap.Tooltip(t);
+            });
+        </script>
+    </body>
+</html>
