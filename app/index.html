@@ -41,6 +41,7 @@
         </style>
     </head>
     <body class="bg-custom-dark1">
+        <div class="d-none" data-check="4.1.8"></div>
         <nav class="navbar navbar-expand-lg navbar-dark bg-custom-dark fixed-top">
             <div class="container-fluid">
                 <div class="navbar-brand oswald">
@@ -163,66 +164,90 @@
                     </div>
                 </div>
                 <div class="card mt-2 text-white bg-custom-dark">
-                    <div class="card-header" data-bs-toggle="tooltip" title="It's disabled for now! Sorry!">
-                        <ul class="nav nav-tabs card-header-tabs justify-content-center" style="pointer-events: none;">
+                    <div class="card-header">
+                        <ul id="steam_tabs" class="nav nav-tabs card-header-tabs justify-content-center">
                             <li class="nav-item">
-                                <a class="nav-link text-white active" href="#">
+                                <button type="button" class="nav-link text-white active" data-bs-toggle="tab" data-bs-target="#steam_converter">
                                     <i class="fas fa-sync-alt"></i>
                                     <span>Converter</span>
-                                </a>
+                                </button>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="#">
-                                    <i class="fas fa-file-import"></i>
-                                    <span>Drag'n'Drop (Autocomplete)</span>
-                                </a>
+                                <span data-bs-toggle="tooltip" title="It's disabled for now! Sorry!">
+                                    <button type="button" class="nav-link text-white" disabled>
+                                        <i class="fas fa-file-import"></i>
+                                        <span>Drag'n'Drop (Autocomplete)</span>
+                                    </button>
+                                </span>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="#">
+                                <button type="button" class="nav-link text-white" data-bs-toggle="tab" data-bs-target="#steam_interfaces">
                                     <i class="fab fa-steam"></i>
                                     <span>Interfaces</span>
-                                </a>
+                                </button>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="#">
-                                    <i class="fab fa-steam"></i>
-                                    <span>Depots</span>
-                                </a>
+                                <span data-bs-toggle="tooltip" title="It's disabled for now! Sorry!">
+                                    <button type="button" class="nav-link text-white" disabled>
+                                        <i class="fab fa-steam"></i>
+                                        <span>Depots</span>
+                                    </button>
+                                </span>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="#">
-                                    <i class="fab fa-steam"></i>
-                                    <span>Items</span>
-                                </a>
+                                <span data-bs-toggle="tooltip" title="It's disabled for now! Sorry!">
+                                    <button type="button" class="nav-link text-white" disabled>
+                                        <i class="fab fa-steam"></i>
+                                        <span>Items</span>
+                                    </button>
+                                </span>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="#">
-                                    <i class="fab fa-steam"></i>
-                                    <span>Achievements</span>
-                                </a>
+                                <span data-bs-toggle="tooltip" title="It's disabled for now! Sorry!">
+                                    <button type="button" class="nav-link text-white" disabled>
+                                        <i class="fab fa-steam"></i>
+                                        <span>Achievements</span>
+                                    </button>
+                                </span>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="#">
-                                    <i class="fas fa-cogs"></i>
-                                    <span>Configurator</span>
-                                </a>
+                                <span data-bs-toggle="tooltip" title="It's disabled for now! Sorry!">
+                                    <button type="button" class="nav-link text-white" disabled>
+                                        <i class="fas fa-cogs"></i>
+                                        <span>Configurator</span>
+                                    </button>
+                                </span>
                             </li>
                         </ul>
                     </div>
                     <div class="card-body">
-                        <div class="input-group">
-                            <select id="select" class="form-select text-white bg-custom-dark1"></select>
-                            <button id="convert" class="btn btn-dark" type="button">
-                                <i class="fas fa-sync-alt"></i>
-                                <span>Convert</span>
-                            </button>
-                            <label class="btn btn-dark" for="unknowns"><input class="form-check-input" type="checkbox" id="unknowns" /> With DLCS Unknowns</label>
-                            <a id="download" href="javascript:;" class="btn btn-dark">
-                                <i class="fas fa-file-download"></i>
-                                <span>Download as file</span>
-                            </a>
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="steam_converter">
+                                <div class="input-group">
+                                    <select id="steam_select" class="form-select text-white bg-custom-dark1"></select>
+                                    <button id="steam_convert" class="btn btn-dark" type="button">
+                                        <i class="fas fa-sync-alt"></i>
+                                        <span>Convert</span>
+                                    </button>
+                                    <label class="btn btn-dark" for="unknowns"><input class="form-check-input" type="checkbox" id="unknowns" /> With DLCS Unknowns</label>
+                                    <a id="steam_download" href="javascript:;" class="btn btn-dark">
+                                        <i class="fas fa-file-download"></i>
+                                        <span>Download as file</span>
+                                    </a>
+                                </div>
+                                <textarea id="steam_textarea" class="form-control text-white bg-custom-dark1 mt-2" rows="20" placeholder="Select an option and click 'Convert'" style="resize: none;"></textarea>
+                            </div>
+                            <div class="tab-pane fade" id="steam_interfaces">
+                                <div class="input-group">
+                                    <input id="steam_interfaces_file" class="form-control" type="file" accept=".dll" />
+                                    <a id="steam_interfaces_download" href="javascript:;" class="btn btn-dark">
+                                        <i class="fas fa-file-download"></i>
+                                        <span>Download as file</span>
+                                    </a>
+                                </div>
+                                <textarea id="steam_interfaces_textarea" class="form-control text-white bg-custom-dark1 mt-2" rows="20" placeholder="Select from the input steam_api(64).dll" style="resize: none;"></textarea>
+                            </div>
                         </div>
-                        <textarea id="textarea" class="form-control text-white bg-custom-dark1 mt-2" rows="20" placeholder="Select an option and click 'Convert'" style="resize: none;"></textarea>
                     </div>
                 </div>
             </div>
@@ -238,8 +263,13 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/js/all.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta2/js/bootstrap.bundle.min.js"></script>
         <script>
-            [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]')).map(function (t) {
-                return new bootstrap.Tooltip(t);
+            [].slice.call(document.querySelectorAll("[data-bs-toggle='tooltip']")).map(t => new bootstrap.Tooltip(t, { container: "body" }));
+            [].slice.call(document.querySelectorAll("#steam_tabs button")).forEach(triggerEl => {
+                const tabTrigger = new bootstrap.Tab(triggerEl);
+                triggerEl.addEventListener("click", event => {
+                    event.preventDefault();
+                    tabTrigger.show();
+                });
             });
         </script>
     </body>
